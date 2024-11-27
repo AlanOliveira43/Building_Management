@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notificação de Entregas/Visitas</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Boxicons for Icons -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="bg-light py-3">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="logo">
+        <img src="logo.png" alt="Logo" height="40">
+      </div>
+      <nav>
+        <ul class="nav">
+          <li class="nav-item"><a class="nav-link" href="#">Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Solutions</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Community</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Resources</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="btn btn-outline-primary">Sair</button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container my-5">
+    <h1 class="fw-bold mb-4">Notificação de Entregas/Visitas</h1>
+    <div class="row">
+      <!-- Image Section -->
+      <div class="col-md-6">
+        <img src="cat-photo.jpg" alt="Foto do produto ou visitante" class="img-fluid rounded">
+      </div>
+      <!-- Details Section -->
+      <div class="col-md-6">
+        <h2 class="fw-bold">Foto do produto ou visitante</h2>
+        <p class="text-muted">Text</p>
+        <!-- Form -->
+        <form>
+          <div class="mb-3">
+            <label for="date" class="form-label">Data de recebimento</label>
+            <input type="date" class="form-control" id="date">
+          </div>
+          <div class="mb-3">
+            <label for="address" class="form-label">Endereço para entrega/visita</label>
+            <select id="address" class="form-select">
+              <option selected>Torre norte - Ap 202</option>
+              <option>Torre sul - Ap 105</option>
+              <option>Torre leste - Ap 301</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Enviar notificação</button>
+        </form>
+        <div class="accordion mt-4" id="descriptionAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Breve descrição
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#descriptionAccordion">
+              <div class="accordion-body">
+                Answer the frequently asked question in a simple sentence, a longish paragraph, or even in a list.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-light py-3">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="footer-left">
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-muted">Visita</a></li>
+          <li><a href="#" class="text-muted">Entrega</a></li>
+        </ul>
+      </div>
+      <div class="footer-right">
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="#"><i class="bx bxl-facebook"></i></a></li>
+          <li class="list-inline-item"><a href="#"><i class="bx bxl-instagram"></i></a></li>
+          <li class="list-inline-item"><a href="#"><i class="bx bxl-linkedin"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
