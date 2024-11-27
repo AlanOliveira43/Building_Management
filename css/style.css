@@ -1,0 +1,34 @@
+body {
+    font-family: 'Arial', sans-serif;
+  }
+  
+  h1, h2 {
+    color: #2B2C38;
+  }
+  
+  .nav-link {
+    color: #000;
+    margin: 0 10px;
+    text-transform: uppercase;
+  }
+  
+  .nav-link:hover {
+    color: #4d7298;
+  }
+  
+  footer {
+    border-top: 1px solid #ddd;
+  }
+  
+  footer .logo img {
+    display: block;
+  }
+  
+  footer a {
+    color: #4d7298;
+  }
+  
+  footer a:hover {
+    color: #000;
+  }
+  
