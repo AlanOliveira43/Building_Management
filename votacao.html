@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Votação em Assembleia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #77aaff 3px solid;
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        .main {
+            padding: 20px;
+            background: #fff;
+            margin-top: 20px;
+        }
+        .main h1 {
+            text-align: center;
+        }
+        .main form {
+            display: flex;
+            flex-direction: column;
+        }
+        .main form label {
+            margin: 10px 0 5px;
+        }
+        .main form input[type="text"],
+        .main form select {
+            padding: 10px;
+            font-size: 16px;
+        }
+        .main form input[type="submit"] {
+            margin-top: 20px;
+            padding: 10px;
+            background: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .main form input[type="submit"]:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Sistema de Votação em Assembleia</h1>
+        </div>
+    </header>
+    <div class="container main">
+        <h1>Vote na Proposta</h1>
+        <form action="/submit_vote" method="post">
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="proposal">Proposta:</label>
+            <select id="proposal" name="proposal" required>
+                <option value="proposta1">Proposta 1</option>
+                <option value="proposta2">Proposta 2</option>
+                <option value="proposta3">Proposta 3</option>
+            </select>
+
+            <input type="submit" value="Votar">
+        </form>
+    </div>
+</body>
+</html></select>
