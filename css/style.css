@@ -1,6 +1,22 @@
+:root {
+  --primary-color: #3A4BB3; /* Nova Cor primária para elementos principais */
+  --secondary-color: #8388A8; /* Nova Cor secundária para elementos de destaque */
+  --bg-color: #000; /* Cor de fundo da página ou elementos de destaque */
+  --text-color: #F5F5F5; /* Nova Cor do texto principal */
+  --border-color: #77a6b6; /* Cor para bordas e elementos delimitadores */
+  
+}
+
 body {
-    font-family: 'Arial', sans-serif;
-  }
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background-color: #f9f9fb; /* Fundo claro */
+  color: #333; /* Texto escuro para legibilidade */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Centraliza o conteúdo na tela */
+}
   
   h1, h2 {
     color: #2B2C38;
@@ -171,4 +187,89 @@ body {
   footer a:hover {
     color: #000;
   }
+
+/* Contêiner da notificação */
+.notification {
+  background-color: #4e0707; /* Fundo branco para contraste */
+  border: 1px solid #770303; /* Borda clara */
+  padding: 20px;
+  border-radius: 10px; /* Borda arredondada */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para profundidade */
+  max-width: 500px;
+  width: 100%; /* Responsivo */
+  text-align: center; /* Centraliza o texto */
+}
+
+/* Estilo da imagem */
+.notification img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve */
+}
+
+/* Título */
+.notification h2 {
+  margin-top: 0;
+  font-size: 1.8rem;
+  color: #4d7298; /* Cor azul suave */
+  font-weight: bold;
+}
+
+/* Texto da descrição */
+.notification p {
+  margin: 10px 0 20px;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #555; /* Texto mais suave */
+}
+
+/* Rótulo */
+.notification label {
+  font-size: 1rem;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 10px;
+  text-align: left; /* Alinha à esquerda */
+}
+
+/* Campo de entrada de data */
+.notification input[type="date"] {
+  padding: 10px;
+  font-size: 1rem;
+  width: 100%; /* Ocupa toda a largura */
+  border: 1px solid #ccc; /* Borda cinza clara */
+  border-radius: 5px;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra interna */
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+/* Foco no campo de entrada */
+.notification input[type="date"]:focus {
+  border-color: #4d7298; /* Destaque azul no foco */
+  box-shadow: 0 0 5px rgba(77, 114, 152, 0.5); /* Efeito interativo */
+}
+
+/* Botão de ação (opcional) */
+.notification button {
+  margin-top: 20px;
+  background-color: #4d7298; /* Fundo azul suave */
+  color: #ffffff; /* Texto branco */
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover no botão */
+.notification button:hover {
+  background-color: #3a5a7c; /* Escurece no hover */
+}
+
+
     
