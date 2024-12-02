@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Financeiro do Condomínio</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Painel Financeiro do Condomínio</h1>
+        
+        <div class="section">
+            <h2>Despesas</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Descrição</th>
+                        <th>Valor</th>
+                        <th>Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Manutenção do Elevador</td>
+                        <td>R$ 1.200,00</td>
+                        <td>01/10/2023</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="section">
+            <h2>Receitas</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Descrição</th>
+                        <th>Valor</th>
+                        <th>Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Aluguel do Salão de Festas</td>
+                        <td>R$ 500,00</td>
+                        <td>05/10/2023</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="section">
+            <h2>Simulação de Orçamento</h2>
+            <form>
+                <label for="descricao">Descrição do Projeto/Reparo:</label><br>
+                <input type="text" id="descricao" name="descricao"><br><br>
+                <label for="valor">Valor Estimado:</label><br>
+                <input type="number" id="valor" name="valor"><br><br>
+                <label for="impacto">Impacto Financeiro:</label><br>
+                <input type="text" id="impacto" name="impacto" readonly><br><br>
+                <button type="button" onclick="simularOrcamento()">Simular</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function simularOrcamento() {
+            var valor = document.getElementById('valor').value;
+            var impacto = valor * 1.1;
+            document.getElementById('impacto').value = 'R$ ' + impacto.toFixed(2);
+        }
+    </script>
+</body>
+</html>

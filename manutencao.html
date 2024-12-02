@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conclusão de Chamado</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Boxicons for Icons -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="d-flex">
+    <!-- Sidebar -->
+    <aside class="sidebar col-md-2">
+      <button class="btn"><i class="bx bx-plus"></i> Novo Chamado</button>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a href="#" class="nav-link">Label</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Label</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Label</a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="container col-md-10">
+      <h1 class="mt-4">Painel de Visualização do Status</h1>
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Áreas Comuns</h2>
+          <ul class="list-group">
+            <li class="list-group-item">
+              <h5>Churrasqueira</h5>
+              <p>Status: Disponível</p>
+              <p>Última manutenção: 01/10/2023</p>
+              <p>Próxima inspeção: 01/12/2023</p>
+            </li>
+            <li class="list-group-item">
+              <h5>Salão de Festas</h5>
+              <p>Status: Em Manutenção</p>
+              <p>Última manutenção: 15/09/2023</p>
+              <p>Próxima inspeção: 15/11/2023</p>
+            </li>
+            <!-- Adicione mais áreas comuns conforme necessário -->
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <h2>Cronograma de Manutenções</h2>
+          <form id="manutencao-form">
+            <div class="form-group">
+              <label for="area">Área</label>
+              <select class="form-control" id="area" required>
+                <option value="elevador">Elevador</option>
+                <option value="piscina">Piscina</option>
+                <option value="equipamentos-ginastica">Equipamentos de Ginástica</option>
+                <!-- Adicione mais áreas conforme necessário -->
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="data-manutencao">Data da Manutenção</label>
+              <input type="date" class="form-control" id="data-manutencao" required>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Cadastrar Manutenção</button>
+          </form>
+          <div id="cronograma" class="mt-4">
+            <h3>Cronograma Atual</h3>
+            <ul class="list-group" id="lista-cronograma">
+              <!-- Manutenções serão adicionadas aqui -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
