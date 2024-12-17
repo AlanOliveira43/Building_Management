@@ -1,21 +1,21 @@
 /* Tema Claro */
 body.light {
-    --bg-color: #ffffff;
+    --bg-color: #df1515;
     --text-color: #000000;
     --card-bg: #f8f9fa;
     --navbar-bg: #007bff;
     --button-bg: #007bff;
-    --button-text: #ffffff;
+    --button-text: #0c0101;
   }
   
   /* Tema Escuro */
   body.dark {
-    --bg-color: #1e1e1e;
-    --text-color: #ffffff;
+    --bg-color: #17d627;
+    --text-color: #070000;
     --card-bg: #333333;
     --navbar-bg: #555555;
     --button-bg: #444444;
-    --button-text: #ffffff;
+    --button-text: #0c0000;
   }
   
   body {
