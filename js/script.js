@@ -52,3 +52,16 @@ document.getElementById('add-chamado').addEventListener('click', function() {
   
     listaCronograma.appendChild(manutencaoItem);
   });
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggleThemeButton = document.getElementById('toggle-theme');
+        toggleThemeButton.addEventListener('click', () => {
+            const htmlElement = document.documentElement;
+            if (htmlElement.getAttribute('data-bs-theme') === 'dark') {
+                htmlElement.setAttribute('data-bs-theme', 'light');
+                toggleThemeButton.textContent = "Modo Escuro";
+            } else {
+                htmlElement.setAttribute('data-bs-theme', 'dark');
+                toggleThemeButton.textContent = "Modo Claro";
+            }
+        });
+  });
