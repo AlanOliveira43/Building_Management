@@ -7,7 +7,6 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="css/styles.css">  
   <!-- Boxicons for Icons -->
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 </head>
@@ -79,21 +78,14 @@
   </footer>
   <!-- Bootstrap JS -->
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const toggleThemeButton = document.getElementById('toggle-theme');
-      toggleThemeButton.addEventListener('click', () => {
-        const body = document.body;
-        if (body.classList.contains('light')) {
-          body.classList.remove('light');
-          body.classList.add('dark');
-          toggleThemeButton.textContent = 'Modo Claro';
-        } else {
-          body.classList.remove('dark');
-          body.classList.add('light');
-          toggleThemeButton.textContent = 'Modo Escuro';
-        }
-      });
-    });
-  </script>
+    document.getElementById('toggle-theme').addEventListener('click', () => {
+            const htmlElement = document.documentElement;
+            const theme = htmlElement.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark';
+            htmlElement.setAttribute('data-bs-theme', theme);
+
+            const toggleButton = document.getElementById('toggle-theme');
+            toggleButton.textContent = theme === 'dark' ? 'Modo Claro' : 'Modo Escuro';
+        });
+    </script>
 </body>
 </html>

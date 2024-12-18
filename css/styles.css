@@ -1,7 +1,7 @@
 /* Tema Claro */
 body.light {
     --bg-color: #df1515;
-    --text-color: #000000;
+    --text-color: #14ca23;
     --card-bg: #2276ca;
     --navbar-bg: #007bff;
     --button-bg: #007bff;
@@ -11,7 +11,7 @@ body.light {
   /* Tema Escuro */
   body.dark {
     --bg-color: #17d627;
-    --text-color: #070000;
+    --text-color: #f70707;
     --card-bg: #333333;
     --navbar-bg: #555555;
     --button-bg: #444444;

@@ -30,7 +30,6 @@
           <h3 class="mb-3">Chamados Abertos</h3>
           <!-- Chamados serão adicionados aqui -->
         </div>
-        <button class="btn btn-primary" id="adicionar-chamado">Adicionar Chamado</button>
       </div>
 
       <!-- Right Section -->
@@ -97,7 +96,17 @@
       // Limpar formulário
       chamadoForm.reset();
     });
-  </script>
+    
+    document.getElementById('toggle-theme').addEventListener('click', () => {
+            const htmlElement = document.documentElement;
+            const theme = htmlElement.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark';
+            htmlElement.setAttribute('data-bs-theme', theme);
+
+            const toggleButton = document.getElementById('toggle-theme');
+            toggleButton.textContent = theme === 'dark' ? 'Modo Claro' : 'Modo Escuro';
+        });
+    </script>
+
   <footer class="bg-dark py-3">
     <div class="container text-center">
       <p>© 2024 Building Management. Todos os direitos reservados.</p>
