@@ -23,7 +23,7 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <h2 class="text-center mb-4">Vote na Proposta</h2>
-                <form action="/submit_vote" method="post" class="p-4 border rounded shadow">
+                <form id="voting-form" class="p-4 border rounded shadow">
                     <!-- Nome -->
                     <div class="mb-3">
                         <label for="name" class="form-label fw-bold">Nome</label>
@@ -49,12 +49,66 @@
         </div>
     </div>
 
+    <!-- Resultados -->
+    <div class="container mt-5">
+        <h3 class="text-center">Votos Registrados</h3>
+        <ul id="votes-list" class="list-group mt-3">
+            <!-- Votos serão adicionados dinamicamente aqui -->
+        </ul>
+    </div>
+
     <!-- Toggle Theme Button -->
     <div class="text-center my-4">
         <button class="btn btn-light" id="toggle-theme">Alternar Tema</button>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        document.getElementById('voting-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
 
+            const name = document.getElementById('name').value;
+            const proposal = document.getElementById('proposal').value;
+
+            if (!name || !proposal) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+
+            // Adiciona o voto à lista
+            const votesList = document.getElementById('votes-list');
+            const voteItem = document.createElement('li');
+            voteItem.className = 'list-group-item d-flex justify-content-between align-items-center';
+
+            voteItem.innerHTML = `
+                <div>
+                    <strong>${name}</strong> votou em <strong>${proposal}</strong>
+                </div>
+            `;
+
+            // Botão para remover o voto
+            const removeButton = document.createElement('button');
+            removeButton.className = 'btn btn-danger btn-sm';
+            removeButton.textContent = 'Remover';
+            removeButton.addEventListener('click', function() {
+                votesList.removeChild(voteItem);
+            });
+
+            voteItem.appendChild(removeButton);
+            votesList.appendChild(voteItem);
+
+            // Limpa o formulário
+            document.getElementById('voting-form').reset();
+        });
+
+        // Alternar tema
+        document.getElementById('toggle-theme').addEventListener('click', () => {
+            const htmlElement = document.documentElement;
+            const theme = htmlElement.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark';
+            htmlElement.setAttribute('data-bs-theme', theme);
+
+            const toggleButton = document.getElementById('toggle-theme');
+            toggleButton.textContent = theme === 'dark' ? 'Modo Claro' : 'Modo Escuro';
+        });
+    </script>
 </body>
 </html>

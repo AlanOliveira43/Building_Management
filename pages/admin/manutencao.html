@@ -80,6 +80,20 @@
     </main>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    document.getElementById('manutencao-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      const area = document.getElementById('area').value;
+      const dataManutencao = document.getElementById('data-manutencao').value;
+      
+      const listaCronograma = document.getElementById('lista-cronograma');
+      const manutencaoItem = document.createElement('li');
+      manutencaoItem.className = 'list-group-item';
+      manutencaoItem.textContent = `Área: ${area}, Data: ${dataManutencao}`;
+      
+      listaCronograma.appendChild(manutencaoItem);
+    });
+  </script>
 </body>
 </html>

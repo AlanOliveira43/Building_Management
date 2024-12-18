@@ -2,15 +2,14 @@
 <html lang="pt-BR" data-bs-theme="light">
 <head>
   <meta charset="UTF-8">
-  <button class="btn btn-outline-primary" id="toggle-theme">Alternar Tema</button>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reserva de Área Comum</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/styles.css">  
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <div class="container mt-5 ">
-    <h1 class="text-center ">Reserva de Área Comum</h1>
+  <div class="container mt-5">
+    <h1 class="text-center">Reserva de Área Comum</h1>
     <form id="reserva-form">
       <div class="form-group">
         <label for="area-comum">Área Comum</label>
@@ -50,8 +49,68 @@
       <button type="submit" class="btn btn-primary">Reservar</button>
     </form>
     <div id="mensagem" class="mt-3"></div>
+
+    <h2 class="mt-5">Reservas Confirmadas</h2>
+    <ul id="reservas-lista" class="list-group">
+      <!-- Reservas adicionadas aparecerão aqui -->
+    </ul>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    document.getElementById('reserva-form').addEventListener('submit', function (event) {
+      event.preventDefault(); // Impede o envio padrão do formulário
+
+      // Obtém os valores do formulário
+      const areaComum = document.getElementById('area-comum').value;
+      const data = document.getElementById('data').value;
+      const horario = document.getElementById('horario').value;
+
+      const servicosAdicionais = [];
+      if (document.getElementById('limpeza').checked) servicosAdicionais.push('Limpeza');
+      if (document.getElementById('decoracao').checked) servicosAdicionais.push('Decoração');
+      if (document.getElementById('catering').checked) servicosAdicionais.push('Catering');
+
+      const dividirReserva = document.getElementById('dividir-reserva').value;
+
+      // Exibe a mensagem de confirmação
+      const mensagem = document.getElementById('mensagem');
+      mensagem.textContent = `Reserva confirmada para ${areaComum} no dia ${data} às ${horario}.`;
+      if (servicosAdicionais.length > 0) {
+        mensagem.textContent += ` Serviços adicionais: ${servicosAdicionais.join(', ')}.`;
+      }
+      if (dividirReserva) {
+        mensagem.textContent += ` Reserva dividida com: ${dividirReserva}.`;
+      }
+      mensagem.className = 'alert alert-success';
+
+      // Adiciona a reserva à lista
+      const reservasLista = document.getElementById('reservas-lista');
+      const reservaItem = document.createElement('li');
+      reservaItem.className = 'list-group-item d-flex justify-content-between align-items-center';
+
+      // Detalhes da reserva
+      reservaItem.innerHTML = `
+        <div>
+          <strong>${areaComum}</strong> - ${data} às ${horario}<br>
+          Serviços: ${servicosAdicionais.join(', ') || 'Nenhum'}<br>
+          Dividido com: ${dividirReserva || 'Ninguém'}
+        </div>
+      `;
+
+      // Botão para remover a reserva
+      const removeButton = document.createElement('button');
+      removeButton.className = 'btn btn-danger btn-sm';
+      removeButton.textContent = 'Remover';
+      removeButton.addEventListener('click', function () {
+        reservasLista.removeChild(reservaItem);
+      });
+
+      reservaItem.appendChild(removeButton);
+      reservasLista.appendChild(reservaItem);
+
+      // Limpa o formulário
+      document.getElementById('reserva-form').reset();
+    });
+  </script>
 </body>
 </html>
