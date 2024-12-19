@@ -25,8 +25,12 @@
         <input type="date" class="form-control" id="data" required>
       </div>
       <div class="form-group">
-        <label for="horario">Horário</label>
-        <input type="time" class="form-control" id="horario" required>
+        <label for="horario-inicio">Horário de Início</label>
+        <input type="time" class="form-control" id="horario-inicio" name="horario-inicio" required>
+      </div>
+      <div class="form-group mt-3">
+        <label for="horario-fim">Horário de Término</label>
+        <input type="time" class="form-control" id="horario-fim" name="horario-fim" required>
       </div>
       <div class="form-group">
         <label for="servicos-adicionais">Serviços Adicionais</label>
@@ -61,10 +65,17 @@
     document.getElementById('reserva-form').addEventListener('submit', function (event) {
       event.preventDefault(); // Impede o envio padrão do formulário
 
-      // Obtém os valores do formulário
-      const areaComum = document.getElementById('area-comum').value;
-      const data = document.getElementById('data').value;
-      const horario = document.getElementById('horario').value;
+  // Obtém os valores do formulário
+  const areaComum = document.getElementById('area-comum').value;
+  const data = document.getElementById('data').value;
+  const horarioInicio = document.getElementById('horario-inicio').value;
+  const horarioFim = document.getElementById('horario-fim').value;
+
+  // Valida se o horário de início é anterior ao horário de término
+  if (horarioInicio >= horarioFim) {
+    alert('O horário de início deve ser anterior ao horário de término.');
+    return;
+  }
 
       const servicosAdicionais = [];
       if (document.getElementById('mesas_cadeiras').checked) servicosAdicionais.push('Mesas e cadeiras');
@@ -75,7 +86,7 @@
 
       // Exibe a mensagem de confirmação
       const mensagem = document.getElementById('mensagem');
-      mensagem.textContent = `Reserva confirmada para ${areaComum} no dia ${data} às ${horario}.`;
+      mensagem.textContent = `Reserva confirmada para ${areaComum} no dia ${data}, das ${horarioInicio} às ${horarioFim}.`;
       if (servicosAdicionais.length > 0) {
         mensagem.textContent += ` Serviços adicionais: ${servicosAdicionais.join(', ')}.`;
       }
