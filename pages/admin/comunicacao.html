@@ -21,11 +21,13 @@
                         <label for="comunicado" class="form-label">Escreva seu comunicado:</label>
                         <textarea id="comunicado" class="form-control" placeholder="Digite o comunicado aqui..." rows="3"></textarea>
                     </div>
-                    <div class="d-grid">
-                        <button type="button" onclick="adicionarComunicado()" class="btn btn-primary btn-lg">
-                            Adicionar Comunicado
-                        </button>
+                    <div class="mb-3">
+                        <label for="data-comunicado" class="form-label">Data do comunicado:</label>
+                        <input type="date" id="data-comunicado" class="form-control" required>
                     </div>
+                    <div id="comunicados" class="mt-4"></div>
+                    <button type="button" class="btn btn-outline-primary" onclick="adicionarComunicado()">Adicionar Comunicado</button>
+                    
                 </form>
                 <hr>
                 <h4 class="mt-4">Comunicados Recentes:</h4>
@@ -38,21 +40,30 @@
 
     <script>
         function adicionarComunicado() {
-            const comunicadoText = document.getElementById('comunicado').value;
-            if (comunicadoText.trim() === '') {
-                alert('Por favor, escreva um comunicado.');
-                return;
-            }
+    const comunicadoText = document.getElementById('comunicado').value;
+    const comunicadoDate = document.getElementById('data-comunicado').value;
 
-            const comunicadoDiv = document.createElement('div');
-            comunicadoDiv.className = 'alert alert-secondary mb-3';
-            comunicadoDiv.textContent = comunicadoText;
+    if (comunicadoText.trim() === '') {
+        alert('Por favor, escreva um comunicado.');
+        return;
+    }
 
-            const comunicadosContainer = document.getElementById('comunicados');
-            comunicadosContainer.prepend(comunicadoDiv);
+    if (comunicadoDate.trim() === '') {
+        alert('Por favor, selecione uma data para o comunicado.');
+        return;
+    }
 
-            document.getElementById('comunicado').value = '';
-        }
+    const comunicadoDiv = document.createElement('div');
+    comunicadoDiv.className = 'alert alert-secondary mb-3';
+    comunicadoDiv.innerHTML = `<strong>${comunicadoDate}:</strong> ${comunicadoText}`;
+
+    const comunicadosContainer = document.getElementById('comunicados');
+    comunicadosContainer.prepend(comunicadoDiv);
+
+    document.getElementById('comunicado').value = '';
+    document.getElementById('data-comunicado').value = '';
+}
+
     
     document.getElementById('toggle-theme').addEventListener('click', () => {
             const htmlElement = document.documentElement;
