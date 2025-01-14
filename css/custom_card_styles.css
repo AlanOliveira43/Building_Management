@@ -1,0 +1,22 @@
+.container .card {
+    transition: transform 0.2s  !important;
+  }
+  
+  
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .btn-custom {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+  
+  .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
