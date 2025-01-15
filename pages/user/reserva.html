@@ -10,7 +10,7 @@
 <body>
   <div class="container mt-5">
     <button class="btn btn-outline-primary" id="toggle-theme">Alternar Tema</button>
-    <button class="btn btn-outline-primary">Log out</button>
+    <button class="btn btn-outline-primary" id="logout-btn">Log out</button>
 
     <h1 class="text-center">Reserva de Área Comum</h1>
     <form id="reserva-form">
@@ -58,83 +58,13 @@
     </form>
     <div id="mensagem" class="mt-3"></div>
 
-    <h2 class="mt-5">Reservas Confirmadas</h2>
-    <ul id="reservas-lista" class="list-group">
-      <!-- Reservas adicionadas aparecerão aqui -->
-    </ul>
+    
   </div>
 
-  <script>
-    document.getElementById('reserva-form').addEventListener('submit', function (event) {
-      event.preventDefault(); // Impede o envio padrão do formulário
+  <script src="../../js/toggle-theme.js" defer></script>
+  <script src="../../js/logout.js" defer></script>
+  <script src="../../js/reserva.js" defer></script>
 
-  // Obtém os valores do formulário
-  const areaComum = document.getElementById('area-comum').value;
-  const data = document.getElementById('data').value;
-  const horarioInicio = document.getElementById('horario-inicio').value;
-  const horarioFim = document.getElementById('horario-fim').value;
 
-  // Valida se o horário de início é anterior ao horário de término
-  if (horarioInicio >= horarioFim) {
-    alert('O horário de início deve ser anterior ao horário de término.');
-    return;
-  }
-
-      const servicosAdicionais = [];
-      if (document.getElementById('mesas_cadeiras').checked) servicosAdicionais.push('Mesas e cadeiras');
-      if (document.getElementById('decoracao').checked) servicosAdicionais.push('Decoração');
-      if (document.getElementById('catering').checked) servicosAdicionais.push('Catering');
-
-      const dividirReserva = document.getElementById('dividir-reserva').value;
-
-      // Exibe a mensagem de confirmação
-      const mensagem = document.getElementById('mensagem');
-      mensagem.textContent = `Reserva confirmada para ${areaComum} no dia ${data}, das ${horarioInicio} às ${horarioFim}.`;
-      if (servicosAdicionais.length > 0) {
-        mensagem.textContent += ` Serviços adicionais: ${servicosAdicionais.join(', ')}.`;
-      }
-      if (dividirReserva) {
-        mensagem.textContent += ` Reserva dividida com: ${dividirReserva}.`;
-      }
-      mensagem.className = 'alert alert-success';
-
-      // Adiciona a reserva à lista
-      const reservasLista = document.getElementById('reservas-lista');
-      const reservaItem = document.createElement('li');
-      reservaItem.className = 'list-group-item d-flex justify-content-between align-items-center';
-
-      // Detalhes da reserva
-      reservaItem.innerHTML = `
-        <div>
-          <strong>${areaComum}</strong> - ${data} às ${horario}<br>
-          Serviços: ${servicosAdicionais.join(', ') || 'Nenhum'}<br>
-          Dividido com: ${dividirReserva || 'Ninguém'}
-        </div>
-      `;
-
-      // Botão para remover a reserva
-      const removeButton = document.createElement('button');
-      removeButton.className = 'btn btn-danger btn-sm';
-      removeButton.textContent = 'Remover';
-      removeButton.addEventListener('click', function () {
-        reservasLista.removeChild(reservaItem);
-      });
-
-      reservaItem.appendChild(removeButton);
-      reservasLista.appendChild(reservaItem);
-
-      // Limpa o formulário
-      document.getElementById('reserva-form').reset();
-    });
-    
-    document.getElementById('toggle-theme').addEventListener('click', () => {
-            const htmlElement = document.documentElement;
-            const theme = htmlElement.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark';
-            htmlElement.setAttribute('data-bs-theme', theme);
-
-            const toggleButton = document.getElementById('toggle-theme');
-            toggleButton.textContent = theme === 'dark' ? 'Modo Claro' : 'Modo Escuro';
-        });
-    </script>
 </body>
 </html>

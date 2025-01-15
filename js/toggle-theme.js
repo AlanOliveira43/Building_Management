@@ -1,3 +1,7 @@
+// toggle-theme.js
+document.getElementById('toggle-theme').addEventListener('click', () => {
+    console.log('Toggle tema funcionando');
+});
 document.getElementById('toggle-theme').addEventListener('click', () => {
     const htmlElement = document.documentElement;
     const theme = htmlElement.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark';
