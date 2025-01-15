@@ -49,37 +49,9 @@
     </div>
   </div>
 
-  <script>
-  document.getElementById('notification-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Evita o envio padrão do formulário
-  
-    const dateInput = document.getElementById('data').value;
-    const enderecoInput = document.getElementById('endereco').value;
-    const confirmationMessage = document.getElementById('confirmation-message');
-    const confirmedDate = document.getElementById('confirmed-date');
-    const confirmedEndereco = document.getElementById('confirmed-endereco');
-  
-    if (dateInput && enderecoInput) {
-      confirmedDate.textContent = `Data Confirmada: ${dateInput}`; // Atualiza a data confirmada
-      confirmedEndereco.textContent = `Endereço Confirmado: ${enderecoInput}`; // Atualiza o endereço confirmado
-      confirmationMessage.classList.remove('d-none'); // Exibe a mensagem de confirmação
-      document.getElementById('data').value = ''; // Limpa o campo de data
-      document.getElementById('endereco').value = ''; // Limpa o campo de endereço
-    } else {
-      alert('Por favor, preencha todos os campos antes de confirmar.');
-    }
-  });
-  
-    
-    document.getElementById('toggle-theme').addEventListener('click', () => {
-            const htmlElement = document.documentElement;
-            const theme = htmlElement.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark';
-            htmlElement.setAttribute('data-bs-theme', theme);
-
-            const toggleButton = document.getElementById('toggle-theme');
-            toggleButton.textContent = theme === 'dark' ? 'Modo Claro' : 'Modo Escuro';
-        });
-    </script>
+  <script src="../../js/toggle-theme.js" defer></script>
+  <script src="../../js/logout.js" defer></script>
+  <script src="../../js/acesso.js" defer></script>
 </body>
 </html>
   
