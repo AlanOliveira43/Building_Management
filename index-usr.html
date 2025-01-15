@@ -9,6 +9,7 @@
   <!-- Custom CSS -->
   <!-- Boxicons for Icons -->
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/custom_card_styles.css">
 </head>
 <body>
   
@@ -73,15 +74,6 @@
     </div>
   </footer>
   <!-- Bootstrap JS -->
-  <script>
-    document.getElementById('toggle-theme').addEventListener('click', () => {
-            const htmlElement = document.documentElement;
-            const theme = htmlElement.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark';
-            htmlElement.setAttribute('data-bs-theme', theme);
-
-            const toggleButton = document.getElementById('toggle-theme');
-            toggleButton.textContent = theme === 'dark' ? 'Modo Claro' : 'Modo Escuro';
-        });
-    </script>
+  <script src="js/toggle-theme.js"></script>
 </body>
 </html>

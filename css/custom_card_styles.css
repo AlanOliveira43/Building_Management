@@ -20,3 +20,20 @@
     font-weight: bold;
   }
   
+  body {
+    background-color: lightblue;
+  }
+  
+  footer {
+    background-color: lightblue !important;
+  }
+  
+  [data-bs-theme="dark"] body {
+    background-color: red;
+  }
+  
+  [data-bs-theme="dark"] footer {
+    background-color: red !important;
+  }
+  
+  
