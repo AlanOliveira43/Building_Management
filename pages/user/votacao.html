@@ -11,32 +11,26 @@
     <link rel="stylesheet" href="../../css/building_styles.css">
 </head>
 <body>
-    <!-- Header -->
-<header class="bg-dark text-white py-4 mb-4">
-    <div class="container d-flex justify-content-between align-items-center">
-      <!-- Botão Log out no canto esquerdo -->
-      <div>
-        <button class="btn btn-outline-primary">Log out</button>
-      </div>
-  
-      <!-- Título centralizado -->
-      <div class="text-center flex-grow-1">
-        <h1 class="fw-bold">Sistema de Votação em Assembleia</h1>
-      </div>
-  
-      <!-- Botão Alternar Tema no canto direito -->
-      <div>
-        <button class="btn btn-outline-primary" id="toggle-theme">Alternar Tema</button>
-      </div>
-    </div>
-  </header>
+    <header class="bg-dark py-3">
+        <div class="container d-flex justify-content-between align-items-center">
+          <div class="logo">
+            <button class="btn btn-outline-primary" id="toggle-theme">Alternar Tema</button>
+          </div>
+          <nav>
+            <ul class="nav">
+              <!-- Navigation Links Placeholder -->
+            </ul>
+          </nav>
+          <button class="btn btn-outline-primary" id="logout-btn">Log out</button>
+        </div>
+      </header>
   
 
     <!-- Main Content -->
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <h2 class="text-center mb-4 text-primary">Vote na Proposta</h2>
+                <h2 class="text-center mb-4 text-white">Vote na Proposta</h2>
                 <form id="voting-form" class="p-4 border rounded shadow">
                     <!-- Nome -->
                     <div class="mb-3">

@@ -10,9 +10,22 @@
 
 </head>
 <body>
+  <!-- Header -->
+  <header class="bg-dark py-3">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="logo">
+        <button class="btn btn-outline-primary" id="toggle-theme">Alternar Tema</button>
+      </div>
+      <nav>
+        <ul class="nav">
+          <!-- Navigation Links Placeholder -->
+        </ul>
+      </nav>
+      <button class="btn btn-outline-primary" id="logout-btn">Log out</button>
+    </div>
+  </header>
   <div class="container mt-5">
-    <button class="btn btn-outline-primary" id="toggle-theme">Alternar Tema</button>
-    <button class="btn btn-outline-primary" id="logout-btn">Log out</button>
+    
 
     <h1 class="text-center">Reserva de Área Comum</h1>
     <form id="reserva-form">
@@ -56,7 +69,7 @@
         <label for="dividir-reserva">Dividir Reserva</label>
         <input type="text" class="form-control" id="dividir-reserva" placeholder="Nome dos moradores (separados por vírgula)">
       </div>
-      <button type="submit" class="btn btn-outline-primary mt-3">Reservar</button>
+      <button type="submit" class="btn btn-primary mt-3">Reservar</button>
     </form>
     <div id="mensagem" class="mt-3"></div>
 
