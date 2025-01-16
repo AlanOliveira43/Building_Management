@@ -32,12 +32,12 @@
   footer {
     background-color: lightgrey !important;
   }
-  */
+  
   [data-bs-theme="dark"] body {
     background-color: black;
   }
   
-/*
+
 [data-bs-theme="dark"] footer {
     background-color: black !important;
 }
