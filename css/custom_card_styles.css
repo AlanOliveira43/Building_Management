@@ -29,11 +29,11 @@ footer {
 }
 
 [data-bs-theme="dark"] body {
-  background-color: red;
+  background-color: lightgray;
 }
 
 [data-bs-theme="dark"] footer {
-  background-color: red !important;
+  background-color: lightgrey !important;
 }
   
   
