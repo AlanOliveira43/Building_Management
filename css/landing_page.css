@@ -21,3 +21,19 @@
       font-size: 2rem;
       color: #007bff;
     }
+    body {
+    
+        color: gray;
+        }
+        
+        footer {
+          background-color: lightgray !important;
+        }
+        
+        [data-bs-theme="dark"] body {
+          background-color: black;
+        }
+        
+        [data-bs-theme="dark"] footer {
+          background-color: black !important;
+        }
