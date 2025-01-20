@@ -15,10 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: 'Sacos de lixo', description: '50 Unidades', quantity: 50 },
         { name: 'Vassouras', description: '10 Unidades', quantity: 10 },
         { name: 'Rodinhos de pia', description: '15 Unidades', quantity: 15 },
-        { name: 'Sabonetes líquidos', description: '500 ml', quantity: 1 }, // Convertido para 500ml (~1 unidade)
+        { name: 'Sabonetes líquidos', description: '500 ml', quantity: 1 }, 
         { name: 'Produtos multiuso', description: '1 Litro', quantity: 1 },
         { name: 'Ceras para piso', description: '1 Litro', quantity: 1 },
-        { name: 'Inseticidas', description: '500 ml', quantity: 1 }, // Convertido para 500ml (~1 unidade)
+        { name: 'Inseticidas', description: '500 ml', quantity: 1 }, 
       ];
   
     /**
