@@ -7,6 +7,8 @@ const app = Vue.createApp({
     Header,
     Footer,
     Section,
+    Card,
+    Modal,
   },
 });
 
