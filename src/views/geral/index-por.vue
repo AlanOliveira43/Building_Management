@@ -1,41 +1,57 @@
-<!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portal Administrativo</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/building_styles.css">
-  <!-- Custom CSS -->
-</head>
-<body>
-  <header class="bg-dark text-white p-3">
-    <div class="container">
-
-      <h1>Painel Administrativo</h1>
-      <p>Gerencie as atividades e o funcionamento do condomínio.</p>
-    </div>
-  </header>
-
-  <main class="container mt-4">
-    <div class="row">
-      <!-- Gerenciamento de Chamados -->
-      <div class="col-md-4">
-        <a href="pages/admin/conclusao-chamado.html" class="btn btn-secondary w-100 mb-3">Gerenciar Chamados</a>
+<template>
+  <div>
+    <!-- Header -->
+    <header class="bg-dark text-white p-3">
+      <div class="container">
+        <h1>Painel Administrativo</h1>
+        <p>Gerencie as atividades e o funcionamento do condomínio.</p>
       </div>
-      <!-- Controle de Acessos -->
-      <div class="col-md-4">
-        <a href="pages/admin/acessos.html" class="btn btn-secondary w-100 mb-3">Controle de Acessos</a>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mt-4">
+      <div class="row">
+        <div
+          class="col-md-4"
+          v-for="option in adminOptions"
+          :key="option.name"
+        >
+          <router-link :to="option.link" class="btn btn-secondary w-100 mb-3">
+            {{ option.name }}
+          </router-link>
+        </div>
       </div>
-      
-    </div>
+    </main>
 
-    </div>
-  </main>
+    <!-- Footer -->
+    <footer class="text-center p-3 mt-3">
+      <p>© 2024 Building Management. Todos os direitos reservados.</p>
+    </footer>
+  </div>
+</template>
 
-  <footer class="text-center p-3 mt-3">
-    <p>© 2024 Building Management. Todos os direitos reservados.</p>  </footer>
-    <script src="js/geral/toggle-theme.js"></script>
-  </body>
-  </html>
+<script>
+export default {
+  name: "AdminPortal",
+  data() {
+    return {
+      adminOptions: [
+        {
+          name: "Gerenciar Chamados",
+          link: "/admin/conclusao-chamado",
+        },
+        {
+          name: "Controle de Acessos",
+          link: "/admin/acessos",
+        },
+      ],
+    };
+  },
+};
+</script>
+
+<style scoped>
+.container {
+  max-width: 960px;
+}
+</style>

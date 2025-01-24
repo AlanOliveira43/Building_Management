@@ -1,92 +1,99 @@
-<!DOCTYPE html>
-<html lang="pt-BR" data-bs-theme="dark">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Duck Building Management</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/building_styles.css">
-  <!-- Custom CSS -->
-  <!-- Boxicons for Icons -->
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-
-  
-  
-</head>
-<body>
-  
-  <header class=" bg-dark text-white py-3">
-        <div class="container d-flex justify-content-between align-items-center">
-      <div class="logo">
-          
+<template>
+  <div id="app" :data-bs-theme="theme">
+    <header class="bg-dark text-white py-3">
+      <div class="container d-flex justify-content-between align-items-center">
+        <div class="logo">
+          <!-- Adicione o logo aqui -->
+        </div>
+        <nav aria-label="Navegação Principal">
+          <!-- Adicione os links de navegação aqui -->
+        </nav>
+        <button class="btn btn-outline-primary" @click="logout">Log out</button>
       </div>
-      <nav aria-label="Navegação Principal">
-        
-      </nav>
-      
-      <button class="btn btn-outline-primary" id="logout-btn">Log out</button>
-    </div>
-  </header>
+    </header>
 
+    <main class="container text-center my-5">
+      <h1 class="fw-bold mb-4 text-white">Duck Building Management</h1>
+      <div class="row g-4">
+        <!-- Espaço para futuros conteúdos -->
+      </div>
 
-  <main class="container text-center my-5">
-    <h1 class="fw-bold mb-4 text-white">Duck Building Management</h1>
-    <div class="row g-4">
-    </div>
-
-
-
-    <section class="mt-5">
-      <h2 class="text-white">Área de Acessos</h2>
-      <div class="row text-center justify-content-center gap-2">
-        <div class="col-md-4 cardOpacity">
-          <i class="bx bx-wrench fs-1 mb-3 text-white"></i>
-          <h3 class="text-white">Abrir chamado</h3>
-          <a href="pages/user/chamados.html" class="btn btn-primary">Acessar Chamados</a>
-          <p class="text-white">Aqui você pode abrir chamados de manutenção.</p>
-        </div>
-        <div class="col-md-4 cardOpacity">
-          <i class="bx bx-bell fs-1 mb-3 text-white"></i>
-          <h3 class="text-white">Ver notificações</h3>
-          <a href="pages/user/notificacoes.html" class="btn btn-primary">Acessar notificacoes</a>
-          <p class="text-white">Veja se há notificações de entrega ou visita.</p>
-        </div>
-        <div class="col-md-4 cardOpacity">
-          <i class="bi bi-brightness-high-fill fs-1 mb-3 text-white"></i>
-          <h3 class="text-white">Reservar área comum</h3>
-          <a href="pages/user/reserva.html" class="btn btn-primary">Acessar reserva</a>
-          <p class="text-white">Reserve aqui o uso da area comum.</p>
+      <section class="mt-5">
+        <h2 class="text-white">Área de Acessos</h2>
+        <div class="row text-center justify-content-center gap-2">
+          <div class="col-md-4 cardOpacity">
+            <i class="bx bx-wrench fs-1 mb-3 text-white"></i>
+            <h3 class="text-white">Abrir chamado</h3>
+            <router-link to="/user/chamados" class="btn btn-primary">Acessar Chamados</router-link>
+            <p class="text-white">Aqui você pode abrir chamados de manutenção.</p>
           </div>
-        <div class="col-md-4 cardOpacity">
-          <i class="bi bi-ev-station fs-1 mb-3 text-white"></i>
-          <h3 class="text-white">Reservar carregamento</h3>
-          <a href="pages/user/reserva_ev.html" class="btn btn-primary">Acessar reserva</a>
-          <p class="text-white">Reserve aqui a estação de carregamento do seu carro eletrico.</p>
-            
+          <div class="col-md-4 cardOpacity">
+            <i class="bx bx-bell fs-1 mb-3 text-white"></i>
+            <h3 class="text-white">Ver notificações</h3>
+            <router-link to="/user/notificacoes" class="btn btn-primary">Acessar notificações</router-link>
+            <p class="text-white">Veja se há notificações de entrega ou visita.</p>
+          </div>
+          <div class="col-md-4 cardOpacity">
+            <i class="bi bi-brightness-high-fill fs-1 mb-3 text-white"></i>
+            <h3 class="text-white">Reservar área comum</h3>
+            <router-link to="/user/reserva" class="btn btn-primary">Acessar reserva</router-link>
+            <p class="text-white">Reserve aqui o uso da área comum.</p>
+          </div>
+          <div class="col-md-4 cardOpacity">
+            <i class="bi bi-ev-station fs-1 mb-3 text-white"></i>
+            <h3 class="text-white">Reservar carregamento</h3>
+            <router-link to="/user/reserva_ev" class="btn btn-primary">Acessar reserva</router-link>
+            <p class="text-white">Reserve aqui a estação de carregamento do seu carro elétrico.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="py-4 text-info">
+      <div class="container d-flex justify-content-between align-items-center">
+        <div>
+          <a href="#"><i class="bx bxl-instagram fs-4 mx-2"></i></a>
+          <a href="#"><i class="bx bxl-facebook fs-4 mx-2"></i></a>
         </div>
       </div>
-    </section>
-  </main>
-  
-  <footer class="py-4 text-info">
-    <div class="container d-flex justify-content-between align-items-center">
-      <div>
-        <a href="#"><i class="bx bxl-instagram fs-4 mx-2"></i></a>
-        <a href="#"><i class="bx bxl-facebook fs-4 mx-2"></i></a>
-      </div>
-    </div>
-  </footer>
-  <footer class="py-3">
-    <div class="container text-center">
-      <p>© 2024 Building Management. Todos os direitos reservados.</p>
-    </div>
     </footer>
-  <!-- Bootstrap JS -->
-  
-  <script src="js/geral/logout-usr.js"></script>
-  <script src="https://unpkg.com/vue@3"></script>
-  <script src="/js/vue/app.js"></script>
-</body>
-</html>
+    <footer class="py-3">
+      <div class="container text-center">
+        <p>© 2024 Building Management. Todos os direitos reservados.</p>
+      </div>
+    </footer>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "DuckBuildingManagement",
+  data() {
+    return {
+      theme: "dark",
+    };
+  },
+  methods: {
+    logout() {
+      // Implementar funcionalidade de logout
+      console.log("Usuário deslogado");
+    },
+  },
+};
+</script>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+.cardOpacity {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+.cardOpacity:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+</style>
