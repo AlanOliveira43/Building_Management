@@ -14,7 +14,7 @@
             <div class="card-body">
               <h2 class="card-title text-primary">Sou Morador</h2>
               <p class="card-text">Acesse o painel de morador para gerenciar reservas, notificações e votações.</p>
-              <router-link to="/index-usr" class="btn btn-primary w-100">Entrar como Morador</router-link>
+              <router-link to="/geral/GeralUser" class="btn btn-primary w-100">Entrar como Morador</router-link>
             </div>
           </div>
         </div>
@@ -23,7 +23,7 @@
             <div class="card-body">
               <h2 class="card-title text-secondary">Sou da Gerência</h2>
               <p class="card-text">Acesse o painel administrativo para gerenciar chamados, manutenções e comunicados.</p>
-              <router-link to="/index-adm" class="btn btn-secondary w-100">Entrar como Gerência</router-link>
+              <router-link to="/geral/GeralGerencia" class="btn btn-secondary w-100">Entrar como Gerência</router-link>
             </div>
           </div>
         </div>

@@ -1,6 +1,11 @@
 import { createRouter, createWebHistory } from "vue-router";
 import AdminAcessos from "@/views/admin/AdminAcessos.vue";
 import AdminEstoque from "@/views/admin/AdminEstoque.vue";
+import AdminChamado from "@/views/admin/AdminChamado.vue";
+import AdminManutencao from "@/views/admin/AdminManutencao.vue";
+import AdminRelatorios from "@/views/admin/AdminRelatorios.vue";
+import AdminReserva from "@/views/admin/AdminReserva.vue";
+import AdminComunicacao from "@/views/admin/AdminComunicacao.vue";
 import UserChamados from "@/views/user/UserChamados.vue";
 import UserNotificacoes from "@/views/user/UserNotificacoes.vue";
 import UserReserva from "@/views/user/UserReserva.vue";
@@ -13,16 +18,15 @@ import GeralMenu from "@/views/geral/GeralMenu.vue";
 import GeralPortaria from "@/views/geral/GeralPortaria.vue";
 import GeralUser from "@/views/geral/GeralUser.vue";
 import GeralZelador from "@/views/geral/GeralZelador.vue";
-import AdminComunicacao from "@/views/admin/AdminComunicacao.vue";
 
 const routes = [
   {
-    path: "/admin/acessos", // URL ajustada para ser mais consistente
+    path: "/admin/AdminAcessos", // URL ajustada para ser mais consistente
     name: "AdminAcessos",
     component: AdminAcessos,
   },
   {
-    path: "/admin/estoque",
+    path: "/admin/AdminEstoque",
     name: "AdminEstoque",
     component: AdminEstoque,
   },
@@ -32,7 +36,7 @@ const routes = [
     component: AdminChamado,
   },
   {
-    path: "/admin/comunicacao",
+    path: "/admin/AdminComunicacao",
     name: "AdminComunicacao",
     component: AdminComunicacao,
   },
@@ -42,72 +46,73 @@ const routes = [
     component: AdminManutencao,
   },
   {
-    path: "/admin/relatorio",
-    name: "AdminRelatorio",
-    component: AdminRelatorio,
+    path: "/admin/AdminRelatorios",
+    name: "AdminRelatorios",
+    component: AdminRelatorios,
   },
   {
-    path: "/admin/reserva",
+    path: "/admin/AdminReserva",
     name: "AdminReserva",
     component: AdminReserva,
   },
   {
-    path: "/user/chamados",
+    path: "/user/UserChamados",
     name: "UserChamados",
     component: UserChamados,
   },
   {
-    path: "/user/notificacoes",
+    path: "/user/UserNotificacoes",
     name: "UserNotificacoes",
     component: UserNotificacoes,
   },
   {
-    path: "/user/reserva",
+    path: "/user/UserReserva",
     name: "UserReserva",
     component: UserReserva,
   },
   {
-    path: "/user/reservaev",
-    name: "UserReservaEv",
+    path: "/user/UserReservaEV",
+    name: "UserReservaEV",
     component: UserReservaEV,
   },
   {
-    path: "/user/votacao",
+    path: "/user/UserVotacao",
     name: "UserVotacao",
     component: UserVotacao,
   },
+  
   {
-    path: "/geral/admin",
+    path: "/geral/GeralAdmin",
     name: "GeralAdmin",
     component: GeralAdmin,
   },
   {
-    path: "/geral/gerencia",
+    path: "/geral/Geralgerencia",
     name: "GeralGerencia",
     component: GeralGerencia,
   },
   {
-    path: "/geral/landing",
+    path: "/geral/GeralLanding",
     name: "GeralLanding",
     component: GeralLanding,
   },
   {
-    path: "/geral/menu",
+    path: "/geral/GeralMenu",
     name: "GeralMenu",
     component: GeralMenu,
   },
   {
-    path: "/geral/Portaria",
+    path: "/geral/GeralPortaria",
     name: "GeralPortaria",
     component: GeralPortaria,
   },
   {
-    path: "/geral/user",
+    path: "/geral/GeralUser",
     name: "GeralUser",
     component: GeralUser,
   },
   {
-    path: "/geral/zelador",
+    path: "/geral/GeralZelador",
     name: "GeralZelador",
     component: GeralZelador,
   },
