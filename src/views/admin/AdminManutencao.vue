@@ -73,6 +73,7 @@
 
 <script>
 export default {
+  name : "AdminManutencao",
   data() {
     return {
       areasComuns: [

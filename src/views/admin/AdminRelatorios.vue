@@ -85,6 +85,7 @@
   
   <script>
   export default {
+    name : "AdminRelatorios",
     data() {
       return {
         despesas: [

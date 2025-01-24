@@ -75,6 +75,7 @@
 
 <script>
 export default {
+  name : "AdminChamados",
   data() {
     return {
       chamados: [], // Lista de chamados abertos

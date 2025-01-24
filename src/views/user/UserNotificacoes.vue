@@ -64,6 +64,7 @@
 
 <script>
 export default {
+  name : "UserNotificacoes",
   data() {
     return {
       entregas: [

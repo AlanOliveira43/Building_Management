@@ -74,30 +74,31 @@
 
 <script>
 export default {
+  name: "AdminChamados", // Nome corrigido
   data() {
     return {
-      chamados: [],
-      novoChamado: {
-        descricao: "",
-        categoria: "",
+      notificacao: {
+        data: "",
+        endereco: "",
       },
+      mensagem: false,
     };
   },
   methods: {
     toggleTheme() {
       document.body.classList.toggle("dark-theme");
     },
-    logout() {
-      window.location.href = "../../index.html";
-    },
-    registrarChamado() {
-      if (this.novoChamado.descricao && this.novoChamado.categoria) {
-        this.chamados.push({ ...this.novoChamado });
-        this.novoChamado.descricao = "";
-        this.novoChamado.categoria = "";
-        alert("Chamado registrado com sucesso!");
+    
+    notificar() {
+      if (this.notificacao.data && this.notificacao.endereco) {
+        this.mensagem = true;
+        setTimeout(() => {
+          this.mensagem = false;
+        }, 5000);
+        this.notificacao.data = "";
+        this.notificacao.endereco = "";
       } else {
-        alert("Por favor, preencha todos os campos antes de registrar o chamado.");
+        alert("Por favor, preencha todos os campos antes de confirmar.");
       }
     },
   },

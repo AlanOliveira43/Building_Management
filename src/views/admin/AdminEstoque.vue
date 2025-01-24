@@ -1,3 +1,4 @@
+
 <template>
   <div>
     <!-- Header -->
@@ -75,6 +76,7 @@
 
 <script>
 export default {
+  name: "AdminEstoque",
   data() {
     return {
       produtos: [],
@@ -89,13 +91,7 @@ export default {
     toggleTheme() {
       document.body.classList.toggle("dark-theme");
     },
-    logout() {
-      window.location.href = "../../index.html";
-    },
-    abrirModal() {
-      const modal = new bootstrap.Modal(document.getElementById("addProductModal"));
-      modal.show();
-    },
+    
     adicionarProduto() {
       if (this.novoProduto.nome && this.novoProduto.descricao && this.novoProduto.quantidade > 0) {
         this.produtos.push({ ...this.novoProduto });
@@ -110,5 +106,5 @@ export default {
 </script>
 
 <style scoped>
-/* Adicione aqui os estilos específicos para este componente */
+
 </style>

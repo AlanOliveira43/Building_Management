@@ -64,6 +64,7 @@
 
 <script>
 export default {
+  name: "AdminAcessos", // Nome corrigido
   data() {
     return {
       notificacao: {
@@ -77,9 +78,7 @@ export default {
     toggleTheme() {
       document.body.classList.toggle("dark-theme");
     },
-    logout() {
-      window.location.href = "../../index.html";
-    },
+    
     notificar() {
       if (this.notificacao.data && this.notificacao.endereco) {
         this.mensagem = true;
@@ -95,6 +94,7 @@ export default {
   },
 };
 </script>
+
 
 <style scoped>
 /* Estilos específicos para este componente */

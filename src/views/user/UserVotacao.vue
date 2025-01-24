@@ -73,9 +73,7 @@
       toggleTheme() {
         document.body.classList.toggle("dark-theme");
       },
-      logout() {
-        window.location.href = "../../index.html";
-      },
+      
       votar() {
         if (this.voto.nome && this.voto.proposta) {
           this.votos.push({ ...this.voto });

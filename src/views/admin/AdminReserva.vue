@@ -57,6 +57,7 @@
 
 <script>
 export default {
+  name : 'AdminReserva',
   data() {
     return {
       reservas: [

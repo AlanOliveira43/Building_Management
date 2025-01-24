@@ -6,7 +6,7 @@ import UserNotificacoes from "@/views/user/UserNotificacoes.vue";
 
 const routes = [
   {
-    path: "/admin/acessos",
+    path: "/admin/acessos", // URL ajustada para ser mais consistente
     name: "AdminAcessos",
     component: AdminAcessos,
   },
