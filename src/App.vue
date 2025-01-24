@@ -4,7 +4,7 @@
       <div class="container d-flex justify-content-between align-items-center">
         <h1 class="m-0">Building Management</h1>
         <nav>
-          <router-link to="/admin/acessos" class="btn btn-outline-light me-2">Admin Acessos</router-link>
+          <router-link to="/geral/GeralAdmin" class="btn btn-outline-light me-2">Geral Admin</router-link>
           <router-link to="/admin/estoque" class="btn btn-outline-light me-2">Admin Estoque</router-link>
           <router-link to="/user/chamados" class="btn btn-outline-light me-2">User Chamados</router-link>
           <router-link to="/user/notificacoes" class="btn btn-outline-light">User Notificações</router-link>
