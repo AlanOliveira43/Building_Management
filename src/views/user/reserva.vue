@@ -1,85 +1,92 @@
-<!DOCTYPE html>
-<html lang="pt-BR" data-bs-theme="dark">
-<head>
-  <meta charset="UTF-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reserva de Área Comum</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="../../css/building_styles.css">
-
-</head>
-<body>
-  <!-- Header -->
-  <header class="bg-dark py-3">
-    <div class="container d-flex justify-content-between align-items-center">
-      <div class="logo">
-        <button class="btn btn-outline-primary" id="toggle-theme">Alternar Tema</button>
+<template>
+  <div>
+    <!-- Header -->
+    <header class="bg-dark py-3">
+      <div class="container d-flex justify-content-between align-items-center">
+        <div class="logo">
+          <button class="btn btn-outline-primary" @click="toggleTheme">Alternar Tema</button>
+        </div>
+        <nav>
+          <ul class="nav">
+            <!-- Links de navegação podem ser adicionados aqui -->
+          </ul>
+        </nav>
+        <button class="btn btn-outline-primary" @click="logout">Log out</button>
       </div>
-      <nav>
-        <ul class="nav">
-          <!-- Navigation Links Placeholder -->
-        </ul>
-      </nav>
-      <button class="btn btn-outline-primary" id="logout-btn">Log out</button>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mt-5">
+      <h1 class="text-center">Reserva de Carregador</h1>
+      <form @submit.prevent="reservar">
+        <div class="form-group">
+          <label for="conector">Conector</label>
+          <select class="form-control" v-model="reserva.conector" required>
+            <option value="carga_lenta">Carga lenta</option>
+            <option value="carga_rapida">Carga rápida</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="data">Data</label>
+          <input type="date" class="form-control" v-model="reserva.data" required />
+        </div>
+        <div class="form-group">
+          <label for="horario-inicio">Horário de Início</label>
+          <input type="time" class="form-control" v-model="reserva.horarioInicio" required />
+        </div>
+        <div class="form-group mt-3">
+          <label for="horario-fim">Horário de Término</label>
+          <input type="time" class="form-control" v-model="reserva.horarioFim" required />
+        </div>
+        <button type="submit" class="btn btn-secondary mt-3">Reservar</button>
+      </form>
+
+      <div id="mensagem" class="mt-3" v-if="mensagem">
+        <p>{{ mensagem }}</p>
+      </div>
     </div>
-  </header>
-  <div class="container mt-5">
-    
-
-    <h1 class="text-center">Reserva de Área Comum</h1>
-    <form id="reserva-form">
-      <div class="form-group">
-        <label for="area-comum">Área Comum</label>
-        <select class="form-control" id="area-comum" required>
-          <option value="churrasqueira">Churrasqueira</option>
-          <option value="salão-de-festas">Salão de Festas</option>
-          <option value="quadra">Quadra</option>
-          
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="data">Data</label>
-        <input type="date" class="form-control" id="data" required>
-      </div>
-      <div class="form-group">
-        <label for="horario-inicio">Horário de Início</label>
-        <input type="time" class="form-control" id="horario-inicio" name="horario-inicio" required>
-      </div>
-      <div class="form-group mt-3">
-        <label for="horario-fim">Horário de Término</label>
-        <input type="time" class="form-control" id="horario-fim" name="horario-fim" required>
-      </div>
-      <div class="form-group">
-        <label for="servicos-adicionais">Serviços Adicionais</label>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="mesas_cadeiras" value="mesas_cadeiras">
-          <label class="form-check-label" for="limpeza">Mesas e cadeiras</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="decoracao" value="Decoração">
-          <label class="form-check-label" for="decoracao">Decoração</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="catering" value="Catering">
-          <label class="form-check-label" for="catering">Catering</label>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="dividir-reserva">Dividir Reserva</label>
-        <input type="text" class="form-control" id="dividir-reserva" placeholder="Nome dos moradores (separados por vírgula)">
-      </div>
-      <button type="submit" class="btn btn btn-secondary mt-3">Reservar</button>
-    </form>
-    <div id="mensagem" class="mt-3"></div>
-
-    
   </div>
+</template>
 
-  <script src="../../js/geral/toggle-theme.js" defer></script>
-  <script src="../../js/geral/logout.js" defer></script>
-  <script src="../../js/user/reserva.js" defer></script>
+<script>
+export default {
+  data() {
+    return {
+      reserva: {
+        conector: "",
+        data: "",
+        horarioInicio: "",
+        horarioFim: "",
+      },
+      mensagem: "",
+    };
+  },
+  methods: {
+    toggleTheme() {
+      document.body.classList.toggle("dark-theme");
+    },
+    logout() {
+      window.location.href = "../../index.html";
+    },
+    reservar() {
+      const { conector, data, horarioInicio, horarioFim } = this.reserva;
 
+      if (conector && data && horarioInicio && horarioFim) {
+        this.mensagem = `Reserva realizada com sucesso para o conector ${conector} no dia ${data}, das ${horarioInicio} às ${horarioFim}.`;
+        this.reserva = {
+          conector: "",
+          data: "",
+          horarioInicio: "",
+          horarioFim: "",
+        };
+      } else {
+        alert("Por favor, preencha todos os campos antes de reservar.");
+      }
+    },
+  },
+};
+</script>
 
-</body>
-</html>
+<style scoped>
+/* Estilos específicos para este componente */
+</style>

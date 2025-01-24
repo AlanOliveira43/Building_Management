@@ -1,31 +1,19 @@
-<!DOCTYPE html>
-<html lang="pt-BR" data-bs-theme="dark">
-<head>
-  <meta charset="UTF-8">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Conclusão de Chamado</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Boxicons for Icons -->
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="../../css/styles.css">
-</head>
-<body>
-  <header class="bg-dark py-3">
-    <div class="container d-flex justify-content-between align-items-center">
-      <div class="logo">
-        <button class="btn btn-outline-primary" id="toggle-theme">Alternar Tema</button>
+<template>
+  <div>
+    <!-- Header -->
+    <header class="bg-dark py-3">
+      <div class="container d-flex justify-content-between align-items-center">
+        <div class="logo">
+          <button class="btn btn-outline-primary" @click="toggleTheme">Alternar Tema</button>
+        </div>
+        <nav>
+          <ul class="nav">
+            <!-- Navigation Links Placeholder -->
+          </ul>
+        </nav>
+        <button class="btn btn-outline-primary" @click="logout">Log out</button>
       </div>
-      <nav>
-        <ul class="nav">
-          <!-- Navigation Links Placeholder -->
-        </ul>
-      </nav>
-      <button class="btn btn-outline-primary" id="logout-btn">Log out</button>
-    </div>
-  </header>
+    </header>
 
     <!-- Main Content -->
     <main class="container col-md-10">
@@ -34,66 +22,114 @@
         <div class="col-md-6">
           <h2>Áreas Comuns</h2>
           <ul class="list-group">
-            <li class="list-group-item">
-              <h5>Churrasqueira</h5>
-              <p>Status: Disponível</p>
-              <p>Última manutenção: 01/10/2023</p>
-              <p>Próxima inspeção: 01/12/2023</p>
+            <li v-for="(area, index) in areasComuns" :key="index" class="list-group-item">
+              <h5>{{ area.nome }}</h5>
+              <p>Status: {{ area.status }}</p>
+              <p>Última manutenção: {{ area.ultimaManutencao }}</p>
+              <p>Próxima inspeção: {{ area.proximaInspecao }}</p>
             </li>
-            <li class="list-group-item">
-              <h5>Salão de Festas</h5>
-              <p>Status: Em Manutenção</p>
-              <p>Última manutenção: 15/09/2023</p>
-              <p>Próxima inspeção: 15/11/2023</p>
-            </li>
-            <!-- Adicione mais áreas comuns conforme necessário -->
           </ul>
         </div>
         <div class="col-md-6">
           <h2>Cronograma de Manutenções</h2>
-          <form id="manutencao-form">
+          <form @submit.prevent="cadastrarManutencao">
             <div class="form-group">
               <label for="area">Área</label>
-              <select class="form-control" id="area" required>
-                <option value="elevador">Elevador</option>
-                <option value="piscina">Piscina</option>
-                <option value="equipamentos-ginastica">Equipamentos de Ginástica</option>
-                <option value="salão-de-festas">Salão de Festas</option>
-                <option value="churrasqueira">Churrasqueira</option>
-                <option value="jardim">Jardim</option>
-                <option value="portaria">Portaria</option>
-                <option value="garagem">Garagem</option>
-                <option value="parque-infantil">Parque Infantil</option>
-                <option value="quadra-poliesportiva">Quadra Poliesportiva</option>
-                <option value="sala-de-reuniao">Sala de Reunião</option>
+              <select v-model="novaManutencao.area" class="form-control" id="area" required>
+                <option v-for="opcao in opcoesAreas" :key="opcao" :value="opcao">{{ opcao }}</option>
               </select>
-              
             </div>
             <div class="form-group">
               <label for="data-manutencao">Data da Manutenção</label>
-              <input type="date" class="form-control" id="data-manutencao" required>
+              <input type="date" v-model="novaManutencao.data" class="form-control" id="data-manutencao" required />
             </div>
             <div class="form-group">
               <label for="local-manutencao">Local da Manutenção</label>
-              <input type="text" class="form-control" id="local-manutencao" placeholder="Digite o local da manutenção" required>
+              <input
+                type="text"
+                v-model="novaManutencao.local"
+                class="form-control"
+                id="local-manutencao"
+                placeholder="Digite o local da manutenção"
+                required
+              />
             </div>
-            
             <button type="submit" class="btn btn btn-outline-secondary mt-3">Cadastrar Manutenção</button>
           </form>
-          <div id="cronograma" class="mt-4">
-            <ul class="list-group" id="lista-cronograma">
-              <!-- Manutenções serão adicionadas aqui -->
+          <div class="mt-4">
+            <ul class="list-group">
+              <li v-for="(manutencao, index) in cronograma" :key="index" class="list-group-item">
+                <strong>Área:</strong> {{ manutencao.area }}<br />
+                <strong>Data:</strong> {{ manutencao.data }}<br />
+                <strong>Local:</strong> {{ manutencao.local }}
+              </li>
             </ul>
           </div>
         </div>
       </div>
     </main>
   </div>
+</template>
 
-  <script src="../../js/geral/toggle-theme.js" defer></script>
-  <script src="../../js/geral/logout.js" defer></script>
-  <script src="../../js/admin/manutencao.js" defer></script>
-  
-</body>
-</html>
-  
+<script>
+export default {
+  data() {
+    return {
+      areasComuns: [
+        {
+          nome: "Churrasqueira",
+          status: "Disponível",
+          ultimaManutencao: "01/10/2023",
+          proximaInspecao: "01/12/2023",
+        },
+        {
+          nome: "Salão de Festas",
+          status: "Em Manutenção",
+          ultimaManutencao: "15/09/2023",
+          proximaInspecao: "15/11/2023",
+        },
+      ],
+      opcoesAreas: [
+        "Elevador",
+        "Piscina",
+        "Equipamentos de Ginástica",
+        "Salão de Festas",
+        "Churrasqueira",
+        "Jardim",
+        "Portaria",
+        "Garagem",
+        "Parque Infantil",
+        "Quadra Poliesportiva",
+        "Sala de Reunião",
+      ],
+      novaManutencao: {
+        area: "",
+        data: "",
+        local: "",
+      },
+      cronograma: [],
+    };
+  },
+  methods: {
+    toggleTheme() {
+      document.body.classList.toggle("dark-theme");
+    },
+    logout() {
+      window.location.href = "../../index.html";
+    },
+    cadastrarManutencao() {
+      if (this.novaManutencao.area && this.novaManutencao.data && this.novaManutencao.local) {
+        this.cronograma.push({ ...this.novaManutencao });
+        this.novaManutencao = { area: "", data: "", local: "" };
+        alert("Manutenção cadastrada com sucesso!");
+      } else {
+        alert("Por favor, preencha todos os campos antes de cadastrar a manutenção.");
+      }
+    },
+  },
+};
+</script>
+
+<style scoped>
+/* Adicione estilos específicos para este componente */
+</style>

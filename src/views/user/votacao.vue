@@ -1,72 +1,94 @@
-<!DOCTYPE html>
-<html lang="pt-BR" data-bs-theme="dark">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Votação em Assembleia</title>
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="../../css/building_styles.css">
-</head>
-<body>
-    <header class="bg-dark py-3">
+<template>
+    <div>
+      <!-- Header -->
+      <header class="bg-dark py-3">
         <div class="container d-flex justify-content-between align-items-center">
           <div class="logo">
-            <button class="btn btn-outline-primary" id="toggle-theme">Alternar Tema</button>
+            <button class="btn btn-outline-primary" @click="toggleTheme">Alternar Tema</button>
           </div>
           <nav>
             <ul class="nav">
-              <!-- Navigation Links Placeholder -->
+              <!-- Links de navegação podem ser adicionados aqui -->
             </ul>
           </nav>
-          <button class="btn btn-outline-primary" id="logout-btn">Log out</button>
+          <button class="btn btn-outline-primary" @click="logout">Log out</button>
         </div>
       </header>
   
-
-    <!-- Main Content -->
-    <div class="container mt-5">
+      <!-- Main Content -->
+      <div class="container mt-5">
         <div class="row justify-content-center">
-            <div class="col-md-6">
-                <h2 class="text-center mb-4 text-white">Vote na Proposta</h2>
-                <form id="voting-form" class="p-4 border rounded shadow">
-                    <!-- Nome -->
-                    <div class="mb-3">
-                        <label for="name" class="form-label fw-bold">Nome</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Digite seu nome" required>
-                    </div>
-
-                    <!-- Proposta -->
-                    <div class="mb-3">
-                        <label for="proposal" class="form-label fw-bold">Proposta</label>
-                        <select id="proposal" name="proposal" class="form-select" required>
-                            <option value="proposta1">Proposta 1</option>
-                            <option value="proposta2">Proposta 2</option>
-                            <option value="proposta3">Proposta 3</option>
-                        </select>
-                    </div>
-
-                    <!-- Botão de Enviar -->
-                    <div class="text-center">
-                        <button type="submit" class="btn btn btn-secondary w-100">Votar</button>
-                    </div>
-                </form>
-            </div>
+          <div class="col-md-6">
+            <h2 class="text-center mb-4">Vote na Proposta</h2>
+            <form @submit.prevent="votar" class="p-4 border rounded shadow">
+              <!-- Nome -->
+              <div class="mb-3">
+                <label for="name" class="form-label fw-bold">Nome</label>
+                <input type="text" class="form-control" v-model="voto.nome" placeholder="Digite seu nome" required />
+              </div>
+  
+              <!-- Proposta -->
+              <div class="mb-3">
+                <label for="proposal" class="form-label fw-bold">Proposta</label>
+                <select v-model="voto.proposta" class="form-select" required>
+                  <option value="proposta1">Proposta 1</option>
+                  <option value="proposta2">Proposta 2</option>
+                  <option value="proposta3">Proposta 3</option>
+                </select>
+              </div>
+  
+              <!-- Botão de Enviar -->
+              <div class="text-center">
+                <button type="submit" class="btn btn-secondary w-100">Votar</button>
+              </div>
+            </form>
+          </div>
         </div>
-    </div>
-
-    <!-- Resultados -->
-    <div class="container mt-5">
+      </div>
+  
+      <!-- Resultados -->
+      <div class="container mt-5">
         <h3 class="text-center">Votos Registrados</h3>
-        <ul id="votes-list" class="list-group mt-3">
-            <!-- Votos serão adicionados dinamicamente aqui -->
+        <ul class="list-group mt-3">
+          <li class="list-group-item" v-for="(voto, index) in votos" :key="index">
+            {{ voto.nome }} votou na {{ voto.proposta }}
+          </li>
         </ul>
+      </div>
     </div>
-
-    <script src="../../js/geral/toggle-theme.js" defer></script>
-    <script src="../../js/user/votacao.js" defer></script>
-    <script src="../../js/geral/logout.js" defer></script>
-</body>
-</html>
+  </template>
+  
+  <script>
+  export default {
+    data() {
+      return {
+        voto: {
+          nome: "",
+          proposta: "",
+        },
+        votos: [],
+      };
+    },
+    methods: {
+      toggleTheme() {
+        document.body.classList.toggle("dark-theme");
+      },
+      logout() {
+        window.location.href = "../../index.html";
+      },
+      votar() {
+        if (this.voto.nome && this.voto.proposta) {
+          this.votos.push({ ...this.voto });
+          this.voto.nome = "";
+          this.voto.proposta = "";
+          alert("Voto registrado com sucesso!");
+        } else {
+          alert("Por favor, preencha todos os campos antes de votar.");
+        }
+      },
+    },
+  };
+  </script>
+  
+  
+  

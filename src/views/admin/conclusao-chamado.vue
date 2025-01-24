@@ -1,84 +1,109 @@
-<!DOCTYPE html>
-<html lang="pt-BR" data-bs-theme="dark">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registro de Chamado</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="../../css/styles.css">
-  <!-- Boxicons for Icons -->
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-</head>
-<body>
-  <header class="bg-dark py-3">
-    <div class="container d-flex justify-content-between align-items-center">
-      <div class="logo">
-        <button class="btn btn-outline-primary" id="toggle-theme">Alternar Tema</button>
+<template>
+  <div>
+    <!-- Header -->
+    <header class="bg-dark py-3">
+      <div class="container d-flex justify-content-between align-items-center">
+        <div class="logo">
+          <button class="btn btn-outline-primary" @click="toggleTheme">Alternar Tema</button>
+        </div>
+        <nav>
+          <ul class="nav">
+            <!-- Links de navegação podem ser adicionados aqui -->
+          </ul>
+        </nav>
+        <button class="btn btn-outline-primary" @click="logout">Log out</button>
       </div>
-      <nav>
-        <ul class="nav">
-          <!-- Navigation Links Placeholder -->
-        </ul>
-      </nav>
-      <button class="btn btn-outline-primary" id="logout-btn">Log out</button>
-    </div>
-  </header>
+    </header>
 
-  <main class="container my-5">
-    <div class="row">
-      <!-- Left Section -->
-      <div class="col-md-6">
-        <h1 class="fw-bold mb-4">Registro de Chamado</h1>
-        <div id="chamados-abertos" class="list-group mb-4">
-          <h3 class="mb-3">Chamados Abertos</h3>
-          <!-- Chamados serão adicionados aqui -->
+    <!-- Main Content -->
+    <main class="container my-5">
+      <div class="row">
+        <!-- Left Section -->
+        <div class="col-md-6">
+          <h1 class="fw-bold mb-4">Registro de Chamado</h1>
+          <div class="list-group mb-4">
+            <h3 class="mb-3">Chamados Abertos</h3>
+            <div v-for="(chamado, index) in chamados" :key="index" class="list-group-item">
+              <p><strong>Descrição:</strong> {{ chamado.descricao }}</p>
+              <p><strong>Categoria:</strong> {{ chamado.categoria }}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Section -->
+        <div class="col-md-6">
+          <h2 class="fw-bold mb-4">Novo Chamado</h2>
+          <form @submit.prevent="registrarChamado">
+            <div class="mb-3">
+              <label for="descricao" class="form-label">Descrição</label>
+              <textarea v-model="novoChamado.descricao" class="form-control" rows="3" placeholder="Descreva o problema" required></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="categoria" class="form-label">Categoria</label>
+              <select v-model="novoChamado.categoria" class="form-select" required>
+                <option value="" selected disabled>Selecione uma categoria</option>
+                <option value="Elétrica">Elétrica</option>
+                <option value="Hidráulica">Hidráulica</option>
+                <option value="Pintura">Pintura</option>
+                <option value="Refrigeração">Refrigeração</option>
+                <option value="Mobiliário">Mobiliário</option>
+                <option value="Limpeza">Limpeza</option>
+                <option value="Segurança">Segurança</option>
+                <option value="Jardinagem">Jardinagem</option>
+                <option value="Informática">Informática</option>
+                <option value="Construção">Construção</option>
+                <option value="Iluminação">Iluminação</option>
+                <option value="Telefonia">Telefonia</option>
+                <option value="Outros">Outros</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-outline-primary">Registrar Chamado</button>
+          </form>
         </div>
       </div>
+    </main>
 
-      <!-- Right Section -->
-      <div class="col-md-6">
-        <h2 class="fw-bold mb-4">Novo Chamado</h2>
-        <form id="chamado-form">
-          <div class="mb-3">
-            <label for="descricao" class="form-label">Descrição</label>
-            <textarea id="descricao" class="form-control" rows="3" placeholder="Descreva o problema" required></textarea>
-          </div>
-          <div class="mb-3">
-            <label for="categoria" class="form-label">Categoria</label>
-            <select id="categoria" class="form-select" required>
-              <option value="" selected disabled>Selecione uma categoria</option>
-              <option value="Elétrica">Elétrica</option>
-              <option value="Hidráulica">Hidráulica</option>
-              <option value="Pintura">Pintura</option>
-              <option value="Refrigeração">Refrigeração</option>
-              <option value="Mobiliário">Mobiliário</option>
-              <option value="Limpeza">Limpeza</option>
-              <option value="Segurança">Segurança</option>
-              <option value="Jardinagem">Jardinagem</option>
-              <option value="Informática">Informática</option>
-              <option value="Construção">Construção</option>
-              <option value="Iluminação">Iluminação</option>
-              <option value="Telefonia">Telefonia</option>
-              <option value="Outros">Outros</option>
-            </select>
-            
-          </div>
-          <button type="submit" class="btn btn-outline-primary">Registrar Chamado</button>
-        </form>
+    <!-- Footer -->
+    <footer class="py-3">
+      <div class="container text-center">
+        <p>© 2024 Building Management. Todos os direitos reservados.</p>
       </div>
-    </div>
-  </main>
-  
-  <script src="../../js/geral/toggle-theme.js" defer></script>
-  <script src="../../js/geral/logout.js" defer></script>
-  <script src="../../js/admin/conclusao-chamado.js" defer></script>
+    </footer>
+  </div>
+</template>
 
-  <footer class="py-3">
-    <div class="container text-center">
-      <p>© 2024 Building Management. Todos os direitos reservados.</p>
-    </div>
-  </footer>
-</body>
-</html>
+<script>
+export default {
+  data() {
+    return {
+      chamados: [],
+      novoChamado: {
+        descricao: "",
+        categoria: "",
+      },
+    };
+  },
+  methods: {
+    toggleTheme() {
+      document.body.classList.toggle("dark-theme");
+    },
+    logout() {
+      window.location.href = "../../index.html";
+    },
+    registrarChamado() {
+      if (this.novoChamado.descricao && this.novoChamado.categoria) {
+        this.chamados.push({ ...this.novoChamado });
+        this.novoChamado.descricao = "";
+        this.novoChamado.categoria = "";
+        alert("Chamado registrado com sucesso!");
+      } else {
+        alert("Por favor, preencha todos os campos antes de registrar o chamado.");
+      }
+    },
+  },
+};
+</script>
+
+<style scoped>
+/* Estilos específicos para este componente */
+</style>

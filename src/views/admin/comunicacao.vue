@@ -1,58 +1,83 @@
-<!DOCTYPE html>
-<html lang="pt-BR" data-bs-theme="dark">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comunicados para Moradores</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/styles.css">
-</head>
-<body class="">
+<template>
+  <div>
     <!-- Header -->
-  <header class="bg-dark py-3">
-    <div class="container d-flex justify-content-between align-items-center">
-      <div class="logo">
-        <button class="btn btn-outline-primary" id="toggle-theme">Alternar Tema</button>
-      </div>
-      <nav>
-        <ul class="nav">
-          <!-- Navigation Links Placeholder -->
-        </ul>
-      </nav>
-      <button class="btn btn-outline-primary" id="logout-btn">Log out</button>
-    </div>
-  </header>
-    <div class="container mt-5">
-        <div class="card-header text-center bg-secundary ">
-                <h1 class="fw-bold">Comunicados para Moradores</h1>
-            </div>
-            <div class="card-body">
-                <form id="comunicadoForm">
-                    <div class="mb-3">
-                        <label for="comunicado" class="form-label">Escreva seu comunicado:</label>
-                        <textarea id="comunicado" class="form-control" placeholder="Digite o comunicado aqui..." rows="3"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="data-comunicado" class="form-label">Data do comunicado:</label>
-                        <input type="date" id="data-comunicado" class="form-control" required>
-                    </div>
-                    <div id="comunicados" class="mt-4"></div>
-                    <button type="button" class="btn btn-outline-secondary" onclick="adicionarComunicado()">Adicionar Comunicado</button>
-                    
-                </form>
-                <hr>
-                <h4 class="mt-4">Comunicados Recentes:</h4>
-                <div class="comunicados" id="comunicados">
-                    <!-- Comunicados adicionados aparecerão aqui -->
-                </div>
-            </div>
+    <header class="bg-dark py-3">
+      <div class="container d-flex justify-content-between align-items-center">
+        <div class="logo">
+          <button class="btn btn-outline-primary" @click="toggleTheme">Alternar Tema</button>
         </div>
-    </div>
+        <nav>
+          <ul class="nav">
+            <!-- Links de navegação podem ser adicionados aqui -->
+          </ul>
+        </nav>
+        <button class="btn btn-outline-primary" @click="logout">Log out</button>
+      </div>
+    </header>
 
-    <script src="../../js/geral/toggle-theme.js" defer></script>
-    <script src="../../js/geral/logout.js" defer></script>
-   <script src="../../js/admin/comunicado.js" defer></script>
-</body>
-</html>
-    
+    <div class="container mt-5">
+      <div class="card-header text-center bg-secondary">
+        <h1 class="fw-bold">Comunicados para Moradores</h1>
+      </div>
+      <div class="card-body">
+        <form @submit.prevent="adicionarComunicado">
+          <div class="mb-3">
+            <label for="comunicado" class="form-label">Escreva seu comunicado:</label>
+            <textarea v-model="novoComunicado.texto" class="form-control" placeholder="Digite o comunicado aqui..." rows="3"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="data-comunicado" class="form-label">Data do comunicado:</label>
+            <input type="date" v-model="novoComunicado.data" class="form-control" required />
+          </div>
+          <button type="submit" class="btn btn-outline-secondary">Adicionar Comunicado</button>
+        </form>
+
+        <hr />
+
+        <h4 class="mt-4">Comunicados Recentes:</h4>
+        <div class="comunicados mt-3">
+          <div v-for="(comunicado, index) in comunicados" :key="index" class="alert alert-info">
+            <p><strong>Data:</strong> {{ comunicado.data }}</p>
+            <p><strong>Comunicado:</strong> {{ comunicado.texto }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      comunicados: [],
+      novoComunicado: {
+        texto: "",
+        data: "",
+      },
+    };
+  },
+  methods: {
+    toggleTheme() {
+      document.body.classList.toggle("dark-theme");
+    },
+    logout() {
+      window.location.href = "../../index.html";
+    },
+    adicionarComunicado() {
+      if (this.novoComunicado.texto && this.novoComunicado.data) {
+        this.comunicados.push({ ...this.novoComunicado });
+        this.novoComunicado.texto = "";
+        this.novoComunicado.data = "";
+        alert("Comunicado adicionado com sucesso!");
+      } else {
+        alert("Por favor, preencha todos os campos antes de adicionar o comunicado.");
+      }
+    },
+  },
+};
+</script>
+
+<style scoped>
+/* Estilos específicos para este componente */
+</style>
