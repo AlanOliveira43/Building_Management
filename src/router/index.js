@@ -92,8 +92,8 @@ const routes = [
     component: GeralGerencia,
   },
   {
-    path: "/geral/GeralLanding",
-    name: "GeralLanding",
+    path: "/",
+    name: "Home",
     component: GeralLanding,
   },
   {
