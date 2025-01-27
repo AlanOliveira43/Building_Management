@@ -106,7 +106,7 @@
         document.body.classList.toggle("dark-theme");
       },
       logout() {
-        window.location.href = "../../index.html";
+        window.location.href = "geral/GeralLanding";
       },
       simularOrcamento() {
         if (this.orcamento.valor) {

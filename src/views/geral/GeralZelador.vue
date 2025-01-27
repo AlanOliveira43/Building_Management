@@ -11,14 +11,14 @@
       <div class="row">
         <!-- Gerenciamento de Chamados -->
         <div class="col-md-4">
-          <router-link to="/admin/conclusao-chamado" class="btn btn-info w-100 mb-3">Gerenciar Chamados</router-link>
+          <router-link to="/admin/AdminChamado" class="btn btn-info w-100 mb-3">Gerenciar Chamados</router-link>
         </div>
         <!-- Manutenção -->
         <div class="col-md-4">
-          <router-link to="/admin/manutencao" class="btn btn-info w-100 mb-3">Manutenções</router-link>
+          <router-link to="/admin/AdminManutencao" class="btn btn-info w-100 mb-3">Manutenções</router-link>
         </div>
         <div class="col-md-4">
-          <router-link to="/admin/estoque" class="btn btn-info w-100 mb-3">Verificar estoque</router-link>
+          <router-link to="/admin/AdminEstoque" class="btn btn-info w-100 mb-3">Verificar estoque</router-link>
         </div>
       </div>
     </main>

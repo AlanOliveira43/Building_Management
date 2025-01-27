@@ -94,7 +94,7 @@ export default {
     },
     logout() {
       // Redirecionar para a página inicial ou realizar logout
-      window.location.href = "../../index.html";
+      window.location.href = "geral/GeralLanding";
     },
     enviarChamado() {
       if (

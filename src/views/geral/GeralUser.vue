@@ -24,25 +24,25 @@
           <div class="col-md-4 cardOpacity">
             <i class="bx bx-wrench fs-1 mb-3 text-white"></i>
             <h3 class="text-white">Abrir chamado</h3>
-            <router-link to="/user/chamados" class="btn btn-primary">Acessar Chamados</router-link>
+            <router-link to="/user/UserChamados" class="btn btn-primary">Acessar Chamados</router-link>
             <p class="text-white">Aqui você pode abrir chamados de manutenção.</p>
           </div>
           <div class="col-md-4 cardOpacity">
             <i class="bx bx-bell fs-1 mb-3 text-white"></i>
             <h3 class="text-white">Ver notificações</h3>
-            <router-link to="/user/notificacoes" class="btn btn-primary">Acessar notificações</router-link>
+            <router-link to="/user/UserNotificacoes" class="btn btn-primary">Acessar notificações</router-link>
             <p class="text-white">Veja se há notificações de entrega ou visita.</p>
           </div>
           <div class="col-md-4 cardOpacity">
             <i class="bi bi-brightness-high-fill fs-1 mb-3 text-white"></i>
             <h3 class="text-white">Reservar área comum</h3>
-            <router-link to="/user/reserva" class="btn btn-primary">Acessar reserva</router-link>
+            <router-link to="/user/UserReserva" class="btn btn-primary">Acessar reserva</router-link>
             <p class="text-white">Reserve aqui o uso da área comum.</p>
           </div>
           <div class="col-md-4 cardOpacity">
             <i class="bi bi-ev-station fs-1 mb-3 text-white"></i>
             <h3 class="text-white">Reservar carregamento</h3>
-            <router-link to="/user/reserva_ev" class="btn btn-primary">Acessar reserva</router-link>
+            <router-link to="/user/UserReservaEV" class="btn btn-primary">Acessar reserva</router-link>
             <p class="text-white">Reserve aqui a estação de carregamento do seu carro elétrico.</p>
           </div>
         </div>

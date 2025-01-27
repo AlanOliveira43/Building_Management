@@ -66,7 +66,7 @@ export default {
       document.body.classList.toggle("dark-theme");
     },
     logout() {
-      window.location.href = "../../index.html";
+      window.location.href = "geral/GeralLanding";
     },
     reservar() {
       const { conector, data, horarioInicio, horarioFim } = this.reserva;

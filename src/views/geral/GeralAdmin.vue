@@ -45,7 +45,7 @@ export default {
         {
           name: "Gerência",
           description: "Acesse o painel de morador para gerenciar reservas, notificações e votações.",
-          link: "/gerencia",
+          link: "/geral/GeralGerencia",
           cardClass: "border-primary",
           textClass: "text-primary",
           buttonClass: "btn-primary",
@@ -53,7 +53,7 @@ export default {
         {
           name: "Portaria",
           description: "Acesse o painel administrativo para gerenciar chamados, manutenções e comunicados.",
-          link: "/portaria",
+          link: "/geral/GeralPortaria",
           cardClass: "border-secondary",
           textClass: "text-secondary",
           buttonClass: "btn-secondary",
@@ -61,7 +61,7 @@ export default {
         {
           name: "Zelador",
           description: "Acesse o painel administrativo para gerenciar chamados, manutenções e comunicados.",
-          link: "/zelador",
+          link: "/geral/GeralZelador",
           cardClass: "border-info",
           textClass: "text-info",
           buttonClass: "btn-info",

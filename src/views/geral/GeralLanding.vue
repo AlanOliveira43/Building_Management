@@ -4,7 +4,7 @@
     <header class="bg-dark text-white py-3">
       <div class="container d-flex justify-content-between align-items-center">
         <button class="btn btn-outline-primary" @click="toggleTheme">Alternar Tema</button>
-        <router-link to="/login" class="btn btn-outline-primary">Log in</router-link>
+        <router-link to="/geral/GeralMenu" class="btn btn-outline-primary">Log in</router-link>
       </div>
     </header>
 

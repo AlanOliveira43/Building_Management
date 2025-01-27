@@ -63,7 +63,7 @@ export default {
       document.body.classList.toggle("dark-theme");
     },
     logout() {
-      window.location.href = "../../index.html";
+      window.location.href = "geral/GeralLanding";
     },
     adicionarComunicado() {
       if (this.novoComunicado.texto && this.novoComunicado.data) {

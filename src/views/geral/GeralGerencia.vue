@@ -39,10 +39,10 @@ export default {
   data() {
     return {
       options: [
-        { label: "Gerenciar Chamados", link: "/admin/conclusao-chamado" },
-        { label: "Relatórios e Finanças", link: "/admin/relatorios" },
-        { label: "Gerenciar Reservas", link: "/admin/reserva-adm" },
-        { label: "Enviar Comunicados", link: "/admin/comunicacao" },
+        { label: "Gerenciar Chamados", link: "/admin/AdminChamado" },
+        { label: "Relatórios e Finanças", link: "/admin/AdminRelatorios" },
+        { label: "Gerenciar Reservas", link: "/admin/AdminRerserva" },
+        { label: "Enviar Comunicados", link: "/admin/AdminManutencao" },
       ],
     };
   },

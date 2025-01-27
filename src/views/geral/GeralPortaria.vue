@@ -38,11 +38,11 @@ export default {
       adminOptions: [
         {
           name: "Gerenciar Chamados",
-          link: "/admin/conclusao-chamado",
+          link: "/admin/AdminChamado",
         },
         {
           name: "Controle de Acessos",
-          link: "/admin/acessos",
+          link: "/admin/AdminAcessos",
         },
       ],
     };
