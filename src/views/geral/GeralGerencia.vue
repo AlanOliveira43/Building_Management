@@ -41,8 +41,8 @@ export default {
       options: [
         { label: "Gerenciar Chamados", link: "/admin/AdminChamado" },
         { label: "Relatórios e Finanças", link: "/admin/AdminRelatorios" },
-        { label: "Gerenciar Reservas", link: "/admin/AdminRerserva" },
-        { label: "Enviar Comunicados", link: "/admin/AdminManutencao" },
+        { label: "Gerenciar Reservas", link: "/admin/AdminReserva" },
+        { label: "Enviar Comunicados", link: "/admin/AdminComunicacao" },
       ],
     };
   },

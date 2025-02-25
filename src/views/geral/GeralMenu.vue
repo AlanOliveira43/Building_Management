@@ -23,7 +23,7 @@
             <div class="card-body">
               <h2 class="card-title text-secondary">Sou da Gerência</h2>
               <p class="card-text">Acesse o painel administrativo para gerenciar chamados, manutenções e comunicados.</p>
-              <router-link to="/geral/GeralGerencia" class="btn btn-secondary w-100">Entrar como Gerência</router-link>
+              <router-link to="/geral/GeralAdmin" class="btn btn-secondary w-100">Entrar como Gerência</router-link>
             </div>
           </div>
         </div>

@@ -74,7 +74,7 @@
 
 <script>
 export default {
-  name: "AdminChamados", // Nome corrigido
+  name: "AdminChamado", // Nome corrigido
   data() {
     return {
       notificacao: {

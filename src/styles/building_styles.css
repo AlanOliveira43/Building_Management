@@ -1,10 +1,4 @@
-import {createApp} from 'vue'
-import App from './App.vue'
-import router from './router'
 
-.container .card {
-  transition: transform 0.2s  !important;
-}
 
 .card:hover {
   transform: scale(1.05);

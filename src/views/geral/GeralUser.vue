@@ -82,18 +82,4 @@ export default {
 };
 </script>
 
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
-.cardOpacity {
-  background-color: rgba(255, 255, 255, 0.1);
-  padding: 20px;
-  border-radius: 8px;
-  transition: background-color 0.3s ease;
-}
-.cardOpacity:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-</style>
+
