@@ -1,85 +1,80 @@
 <template>
-  <div id="app" :data-bs-theme="theme">
-    <header class="bg-dark text-white py-3">
-      <div class="container d-flex justify-content-between align-items-center">
+  <div :data-theme="theme" class="min-h-screen" :class="themeClass">
+    <!-- Header -->
+    <header class="bg-gray-800 py-3">
+      <div class="container mx-auto flex justify-between items-center px-4">
         <div class="logo">
-          <!-- Adicione o logo aqui -->
+          <!-- Logo aqui -->
         </div>
         <nav aria-label="Navegação Principal">
-          <!-- Adicione os links de navegação aqui -->
+          <!-- Links de navegação -->
         </nav>
-        <button class="btn btn-outline-primary" @click="logout">Log out</button>
+        <div class="flex space-x-3">
+          <button @click="toggleTheme" class="btn-primary">
+            {{ themeLabel }}
+          </button>
+          <button @click="logout" class="btn-danger">
+            Log out
+          </button>
+        </div>
       </div>
     </header>
 
-    <main class="container text-center my-5">
-      <h1 class="fw-bold mb-4 text-white">Duck Building Management</h1>
-      <div class="row g-4">
-        <!-- Espaço para futuros conteúdos -->
-      </div>
+    <!-- Main Content -->
+    <main class="container mx-auto text-center my-12">
+      <h1 class="text-4xl font-bold mb-6">Duck Building Management</h1>
 
+      <!-- Acesso -->
       <section class="mt-5">
-        <h2 class="text-white">Área de Acessos</h2>
-        <div class="row text-center justify-content-center gap-2">
-          <div class="col-md-4 cardOpacity">
-            <i class="bx bx-wrench fs-1 mb-3 text-white"></i>
-            <h3 class="text-white">Abrir chamado</h3>
-            <router-link to="/user/UserChamados" class="btn btn-primary">Acessar Chamados</router-link>
-            <p class="text-white">Aqui você pode abrir chamados de manutenção.</p>
-          </div>
-          <div class="col-md-4 cardOpacity">
-            <i class="bx bx-bell fs-1 mb-3 text-white"></i>
-            <h3 class="text-white">Ver notificações</h3>
-            <router-link to="/user/UserNotificacoes" class="btn btn-primary">Acessar notificações</router-link>
-            <p class="text-white">Veja se há notificações de entrega ou visita.</p>
-          </div>
-          <div class="col-md-4 cardOpacity">
-            <i class="bi bi-brightness-high-fill fs-1 mb-3 text-white"></i>
-            <h3 class="text-white">Reservar área comum</h3>
-            <router-link to="/user/UserReserva" class="btn btn-primary">Acessar reserva</router-link>
-            <p class="text-white">Reserve aqui o uso da área comum.</p>
-          </div>
-          <div class="col-md-4 cardOpacity">
-            <i class="bi bi-ev-station fs-1 mb-3 text-white"></i>
-            <h3 class="text-white">Reservar carregamento</h3>
-            <router-link to="/user/UserReservaEV" class="btn btn-primary">Acessar reserva</router-link>
-            <p class="text-white">Reserve aqui a estação de carregamento do seu carro elétrico.</p>
-          </div>
+        <h2 class="text-2xl text-white font-semibold mb-6">Área de Acessos</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <AccessCard v-for="item in acessos" :key="item.titulo" :item="item" />
         </div>
       </section>
     </main>
 
-    <footer class="py-4 text-info">
-      <div class="container d-flex justify-content-between align-items-center">
-        <div>
-          <a href="#"><i class="bx bxl-instagram fs-4 mx-2"></i></a>
-          <a href="#"><i class="bx bxl-facebook fs-4 mx-2"></i></a>
-        </div>
-      </div>
-    </footer>
-    <footer class="py-3">
-      <div class="container text-center">
-        <p>© 2024 Building Management. Todos os direitos reservados.</p>
-      </div>
-    </footer>
+    <!-- Footer -->
+    <Footer />
   </div>
 </template>
 
 <script>
+import { ref, computed } from "vue";
+import { useRouter } from "vue-router";
+import AccessCard from "@/components/AccessCard.vue";
+import Footer from "@/components/Footer.vue";
+
 export default {
   name: "DuckBuildingManagement",
-  data() {
-    return {
-      theme: "dark",
-    };
-  },
-  methods: {
-    logout() {
-      // Implementar funcionalidade de logout
-      console.log("Usuário deslogado");
-    },
-  },
+  components: { AccessCard, Footer },
+  setup() {
+    const theme = ref("dark");
+    const router = useRouter();
+
+    const acessos = ref([
+      { titulo: "Abrir chamado", icone: "bx bx-wrench", link: "/user/UserChamados", textoBotao: "Acessar Chamados", descricao: "Aqui você pode abrir chamados de manutenção." },
+      { titulo: "Ver notificações", icone: "bx bx-bell", link: "/user/UserNotificacoes", textoBotao: "Acessar Notificações", descricao: "Veja se há notificações de entrega ou visita." },
+      { titulo: "Reservar área comum", icone: "bi bi-brightness-high-fill", link: "/user/UserReserva", textoBotao: "Acessar Reserva", descricao: "Reserve aqui o uso da área comum." },
+      { titulo: "Reservar carregamento", icone: "bi bi-ev-station", link: "/user/UserReservaEV", textoBotao: "Acessar Reserva", descricao: "Reserve aqui a estação de carregamento do seu carro elétrico." }
+    ]);
+
+    const themeClass = computed(() => theme.value === "dark" ? "bg-gray-900 text-white" : "bg-gray-100 text-black");
+    const themeLabel = computed(() => theme.value === "dark" ? "Modo Claro" : "Modo Escuro");
+
+    const toggleTheme = () => theme.value = theme.value === "dark" ? "light" : "dark";
+    const logout = () => router.push("/geral/GeralLanding");
+
+    return { theme, themeClass, themeLabel, toggleTheme, logout, acessos };
+  }
 };
 </script>
 
+<style scoped>
+.btn-primary {
+  @apply border border-blue-500 text-blue-500 px-4 py-2 rounded hover:bg-blue-500 hover:text-white transition;
+}
 
+.btn-danger {
+  @apply border border-red-500 text-red-500 px-4 py-2 rounded hover:bg-red-500 hover:text-white transition;
+}
+</style>

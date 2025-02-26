@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="themeClass">
     <!-- Header Superior -->
     <header class="bg-dark text-white py-3">
       <div class="container d-flex justify-content-between align-items-center">
@@ -29,8 +29,8 @@
     <section id="facilities" class="py-5">
       <div class="container">
         <h2 class="text-center mb-4">Facilidades e Serviços</h2>
-        <div class="row text-center" v-for="(row, index) in facilities" :key="index">
-          <div class="col-md-4" v-for="facility in row" :key="facility.title">
+        <div class="row text-center">
+          <div class="col-md-4" v-for="facility in facilities" :key="facility.title">
             <i :class="facility.icon" class="feature-icon"></i>
             <h4>{{ facility.title }}</h4>
             <p>{{ facility.description }}</p>
@@ -86,66 +86,39 @@
 </template>
 
 <script>
+import { ref, computed } from "vue";
+
 export default {
   name: "VistaBela",
-  data() {
-    return {
-      facilities: [
-        [
-          {
-            icon: "bi bi-house-door",
-            title: "Segurança 24h",
-            description: "Portaria e monitoramento por câmeras para sua tranquilidade.",
-          },
-          {
-            icon: "bi bi-tree",
-            title: "Área Verde",
-            description: "Jardins e espaços ao ar livre para relaxar e curtir a natureza.",
-          },
-          {
-            icon: "bi bi-people",
-            title: "Salão de Festas",
-            description: "Espaço ideal para celebrar momentos especiais com amigos e família.",
-          },
-        ],
-        [
-          {
-            icon: "bi bi-basket",
-            title: "Quadra Poliesportiva",
-            description: "Esportes para todas as idades: futebol, vôlei, basquete e mais.",
-          },
-          {
-            icon: "bi bi-droplet",
-            title: "Piscina",
-            description: "Piscina adulto e infantil para lazer e esportes aquáticos.",
-          },
-          {
-            icon: "bi bi-lightning-charge",
-            title: "Carregadores para Veículos Elétricos",
-            description: "Infraestrutura moderna para facilitar sua rotina.",
-          },
-        ],
-      ],
-      testimonials: [
-        { quote: "Morar aqui é maravilhoso. A segurança e a área de lazer são excelentes!", name: "Carlos Silva" },
-        { quote: "Os espaços são perfeitos para a minha família. Recomendo a todos.", name: "Ana Oliveira" },
-      ],
-      contact: {
-        name: "",
-        email: "",
-        message: "",
-      },
+  setup() {
+    const theme = ref("light");
+    const facilities = ref([
+      { icon: "bi bi-house-door", title: "Segurança 24h", description: "Portaria e monitoramento por câmeras para sua tranquilidade." },
+      { icon: "bi bi-tree", title: "Área Verde", description: "Jardins e espaços ao ar livre para relaxar e curtir a natureza." },
+      { icon: "bi bi-people", title: "Salão de Festas", description: "Espaço ideal para celebrar momentos especiais com amigos e família." },
+      { icon: "bi bi-basket", title: "Quadra Poliesportiva", description: "Esportes para todas as idades: futebol, vôlei, basquete e mais." },
+      { icon: "bi bi-droplet", title: "Piscina", description: "Piscina adulto e infantil para lazer e esportes aquáticos." },
+      { icon: "bi bi-lightning-charge", title: "Carregadores para Veículos Elétricos", description: "Infraestrutura moderna para facilitar sua rotina." }
+    ]);
+    const testimonials = ref([
+      { quote: "Morar aqui é maravilhoso. A segurança e a área de lazer são excelentes!", name: "Carlos Silva" },
+      { quote: "Os espaços são perfeitos para a minha família. Recomendo a todos.", name: "Ana Oliveira" }
+    ]);
+    const contact = ref({ name: "", email: "", message: "" });
+    
+    const themeClass = computed(() => theme.value === "dark" ? "bg-dark text-white" : "bg-light text-black");
+
+    const toggleTheme = () => {
+      theme.value = theme.value === "dark" ? "light" : "dark";
     };
-  },
-  methods: {
-    toggleTheme() {
-      document.body.classList.toggle("dark-theme");
-    },
-    handleSubmit() {
-      alert(`Obrigado, ${this.contact.name}! Sua mensagem foi enviada.`);
-      this.contact = { name: "", email: "", message: "" };
-    },
-  },
+    
+    const handleSubmit = () => {
+      alert(`Obrigado, ${contact.value.name}! Sua mensagem foi enviada.`);
+      contact.value = { name: "", email: "", message: "" };
+    };
+
+    return { theme, toggleTheme, themeClass, facilities, testimonials, contact, handleSubmit };
+  }
 };
 </script>
 
